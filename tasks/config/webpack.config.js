@@ -17,7 +17,7 @@ module.exports = {
 
   externals: {
     'classnames': true,
-    'react': true,
+    'react': 'React',
     'react-dom': true,
     'react-highlight-click': true,
     'react-addons-css-transition-group': true
@@ -26,7 +26,7 @@ module.exports = {
   module: {
     preLoaders: [{
       test: /\.(jsx?|es6)$/,
-      exclude: /node_modules/,
+      exclude: /(node_modules|dist)/,
       include: /src\/.*/,
       loader: 'eslint'
     }],

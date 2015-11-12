@@ -59,15 +59,20 @@ module.exports = function(grunt) {
    */
   var serverOptions = assign({}, require('./webpack.config'), {
     plugins: [],
-    externals: {},
     entry : {
       bundle: path.resolve(__dirname, '../../examples/ButtonsExample.jsx')
     },
     output: {
       filename: 'bundle.js'
     },
+    devtool: 'eval',
     eslint: {
       failOnWarning: false
+    },
+    externals: {
+      'react': 'React',
+      'react-dom': 'ReactDOM',
+      'react-addons-css-transition-group': 'React.addons.CSSTransitionGroup'
     }
   });
 
