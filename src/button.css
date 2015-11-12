@@ -11,7 +11,6 @@
   margin: 4px;
   font: inherit;
   color: inherit;
-  cursor: pointer;
   font-weight: inherit;
   overflow: hidden;
   transition: 100ms ease-in all;
@@ -42,7 +41,7 @@
 }
 
 .hoverEffect {
-  background-color: color(#0876EC a(0.2));
+  background-color: color(#42aa65 a(0.1));
   left: 50%;
   margin-left: -50px;
   top: 50%;
@@ -106,7 +105,18 @@
  * Icon Size
  */
 .icon {
+  font-size: 20px;
+  vertical-align: text-top;
+  line-height: 1;
+  display: inline-block;
+}
+span + .icon {
+  margin-left: 6px;
+}
+.action .icon {
   font-size: 30px;
+  vertical-align: baseline;
+  margin-left: 0;
 }
 
 /**
@@ -115,6 +125,10 @@
 .action,
 .raised {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.raised {
+  border-radius: 2px;
 }
 
 /**
@@ -153,4 +167,28 @@
       transform: translateY(1px);
     }
   }
+}
+
+.group {
+  display: block;
+}
+
+.group .btn:first-child  {
+  margin-left: 0;
+}
+
+.group .btn:last-child  {
+  margin-right: 0;
+}
+
+.fill {
+  display: flex;
+}
+
+.right {
+  text-align: right;
+}
+
+.left {
+  text-align: left;
 }

@@ -7,7 +7,7 @@
 
 import React from 'react';
 import classNames from 'classnames';
-import css from './button-group.css';
+import css from './button.css';
 
 export default class ButtonGroup extends React.Component {
   render() {
