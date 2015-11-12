@@ -6,8 +6,7 @@
   "scripts": {
     "start": "grunt server",
     "build": "grunt build",
-    "test": "jest src/ --coverage",
-    "postinstall": "npm run build"
+    "test": "jest src/ --coverage"
   },
   "repository": {
     "type": "git",
