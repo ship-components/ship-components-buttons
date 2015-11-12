@@ -49,7 +49,9 @@ export default class Button extends React.Component {
       return true;
     } else if (this.state.pressed !== nextState.pressed) {
       return true;
-    } else if(this.state.width !== nextState.width) {
+    } else if (this.props.disabled !== nextProps.disabled) {
+      return true;
+    } else if (this.state.hoverSize !== nextState.hoverSize) {
       return true;
     } else {
       return false;
