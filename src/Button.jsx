@@ -22,7 +22,7 @@ export default class Button extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      width: void 0,
+      hoverSize: void 0,
       hover: false,
       pressed: false
     };
@@ -77,7 +77,7 @@ export default class Button extends React.Component {
    */
   calculateWidth() {
     this.setState({
-      width: this.refs.container ? this.refs.container.offsetWidth : void 0
+      hoverSize: this.refs.container ? Math.max(this.refs.container.offsetWidth, this.refs.container.offsetHeight) : void 0
     });
   }
 
@@ -170,9 +170,9 @@ export default class Button extends React.Component {
     );
 
     let hoverStyles = {};
-    if (this.state.width) {
+    if (this.state.hoverSize) {
       // Ensure it covers the button
-      hoverStyles.width = this.state.width * 1.2;
+      hoverStyles.width = this.state.hoverSize * 1.3;
       hoverStyles.height = hoverStyles.width;
 
       // Center it
