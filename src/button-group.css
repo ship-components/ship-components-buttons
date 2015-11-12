@@ -1,0 +1,15 @@
+.group {
+  display: block;
+}
+
+.fill {
+  display: flex;
+}
+
+.right {
+  text-align: right;
+}
+
+.left {
+  text-align: left;
+}
