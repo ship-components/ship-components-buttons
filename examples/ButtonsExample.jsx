@@ -58,6 +58,51 @@ class ButtonsExamples extends React.Component {
           </code>
         </div>
         <div className='example-group'>
+          <h2>Icons</h2>
+          <ButtonGroup>
+            <RaisedButton
+              iconPrefix='ion-'
+              icon='plus'>
+                Add
+            </RaisedButton>
+            <RaisedButton
+              iconPrefix='ion-'
+              icon='minus'/>
+          </ButtonGroup>
+          <code>
+            {'<RaisedButton\n' +
+             '        onClick={this.handleClick}\n' +
+             '        iconPrefix=\'ion-\'\n' +
+             '        icon=\'plus-round\'>\n' +
+             '              Add\n' +
+             '</RaisedButton>'}
+          </code>
+        </div>
+        <div className='example-group'>
+          <h2>Disabled</h2>
+          <ButtonGroup>
+            <RaisedButton
+              disabled
+              iconPrefix='ion-'
+              icon='plus'>
+                Add
+            </RaisedButton>
+            <RaisedButton
+              disabled
+              iconPrefix='ion-'
+              icon='minus'/>
+          </ButtonGroup>
+          <code>
+            {'<RaisedButton\n' +
+             '        disabled\n' +
+             '        onClick={this.handleClick}\n' +
+             '        iconPrefix=\'ion-\'\n' +
+             '        icon=\'plus-round\'>\n' +
+             '              Add\n' +
+             '</RaisedButton>'}
+          </code>
+        </div>
+        <div className='example-group'>
           <h2>Button Groups</h2>
           <h3>Default</h3>
           <ButtonGroup>
