@@ -201,21 +201,22 @@ export default class Button extends React.Component {
 
     return (
       <this.tagName {...props}>
-          <HighlightClick
-            className={css.container}
-            disabled={this.props.disabled}>
-              {this.renderInnerContents()}
-              <ReactCSSTransitionGroup
-                className={css.hoverContainer}
-                transitionName={css}
-                transitionEnterTimeout={500}
-                transitionLeaveTimeout={500} >
-                {this.state.hover ?
-                  <div className={css.hoverEffect}
-                    style={hoverStyles}/>
-                : null}
-              </ReactCSSTransitionGroup>
-          </HighlightClick>
+        <HighlightClick
+          className={css.container}
+          disabled={this.props.disabled}>
+            {this.props.children}
+            {typeof this.props.icon === 'string' ? <span className={css.icon + ' ' + this.props.iconPrefix + this.props.icon} /> : null}
+            <ReactCSSTransitionGroup
+              className={css.hoverContainer}
+              transitionName={css}
+              transitionEnterTimeout={500}
+              transitionLeaveTimeout={500} >
+              {this.state.hover ?
+                <div className={css.hoverEffect}
+                  style={hoverStyles}/>
+              : null}
+            </ReactCSSTransitionGroup>
+        </HighlightClick>
       </this.tagName>
     );
   }
