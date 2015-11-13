@@ -60,6 +60,7 @@
   border-radius: 2px;
   overflow: hidden;
   transition: 100ms ease-in all;
+  position: initial;
   /**
    * Fix for webkit border-radius overflow bug
    * http://stackoverflow.com/questions/5736503/how-to-make-css3-rounded-corners-hide-overflow-in-chrome-opera
