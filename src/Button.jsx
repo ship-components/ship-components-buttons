@@ -150,7 +150,8 @@ export default class Button extends React.Component {
     if (typeof this.props.href === 'string' && this.props.href.length > 0) {
       return 'a';
     } else {
-      return this.props.tag;
+      return 'div';
+      // return this.props.tag; FF isn't triggereing on <buttons>
     }
   }
 
