@@ -85,7 +85,7 @@ export default class Button extends React.Component {
    * Let the button now the mouse is here
    */
   handleMouseEnter() {
-    if (this.props.disabled) {
+    if (this.props.disabled || this.props.disableHover) {
       return;
     }
     this.setState({
@@ -234,7 +234,8 @@ Button.propTypes = {
   onClick: React.PropTypes.func,
   icon: React.PropTypes.string,
   iconPrefix: React.PropTypes.string,
-  disabled: React.PropTypes.bool
+  disabled: React.PropTypes.bool,
+  disableHover: React.PropTypes.bool
 };
 
 /**
@@ -242,6 +243,7 @@ Button.propTypes = {
  * @type {Object}
  */
 Button.defaultProps = {
+  disableHover: false,
   iconPrefix: 'icon-',
   disabled: false,
   pressedTimeout: 500,

@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"), require("classnames"), require("react-addons-css-transition-group"), require("react-highlight-click"));
+		module.exports = factory(require("React"), require("classnames"), require("react-addons-css-transition-group"), require("react-highlight-click"));
 	else if(typeof define === 'function' && define.amd)
-		define(["react", "classnames", "react-addons-css-transition-group", "react-highlight-click"], factory);
+		define(["React", "classnames", "react-addons-css-transition-group", "react-highlight-click"], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("react"), require("classnames"), require("react-addons-css-transition-group"), require("react-highlight-click")) : factory(root["react"], root["classnames"], root["react-addons-css-transition-group"], root["react-highlight-click"]);
+		var a = typeof exports === 'object' ? factory(require("React"), require("classnames"), require("react-addons-css-transition-group"), require("react-highlight-click")) : factory(root["React"], root["classnames"], root["react-addons-css-transition-group"], root["react-highlight-click"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_9__, __WEBPACK_EXTERNAL_MODULE_10__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_8__, __WEBPACK_EXTERNAL_MODULE_9__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -74,15 +74,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _Button2 = _interopRequireDefault(_Button);
 	
-	var _FloatingActionButton = __webpack_require__(5);
+	var _FloatingActionButton = __webpack_require__(6);
 	
 	var _FloatingActionButton2 = _interopRequireDefault(_FloatingActionButton);
 	
-	var _RaisedButton = __webpack_require__(6);
+	var _RaisedButton = __webpack_require__(7);
 	
 	var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 	
-	var _ButtonGroup = __webpack_require__(4);
+	var _ButtonGroup = __webpack_require__(5);
 	
 	var _ButtonGroup2 = _interopRequireDefault(_ButtonGroup);
 	
@@ -129,19 +129,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _classnames = __webpack_require__(3);
+	var _classnames = __webpack_require__(4);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _reactHighlightClick = __webpack_require__(10);
+	var _reactHighlightClick = __webpack_require__(9);
 	
 	var _reactHighlightClick2 = _interopRequireDefault(_reactHighlightClick);
 	
-	var _reactAddonsCssTransitionGroup = __webpack_require__(9);
+	var _reactAddonsCssTransitionGroup = __webpack_require__(8);
 	
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 	
-	var _button = __webpack_require__(8);
+	var _button = __webpack_require__(3);
 	
 	var _button2 = _interopRequireDefault(_button);
 	
@@ -171,7 +171,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Button).call(this, props));
 	
 	    _this2.state = {
-	      width: void 0,
+	      hoverSize: void 0,
 	      hover: false,
 	      pressed: false
 	    };
@@ -205,7 +205,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return true;
 	      } else if (this.state.pressed !== nextState.pressed) {
 	        return true;
-	      } else if (this.state.width !== nextState.width) {
+	      } else if (this.props.disabled !== nextProps.disabled) {
+	        return true;
+	      } else if (this.state.hoverSize !== nextState.hoverSize) {
 	        return true;
 	      } else {
 	        return false;
@@ -240,7 +242,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'calculateWidth',
 	    value: function calculateWidth() {
 	      this.setState({
-	        width: this.refs.container ? this.refs.container.offsetWidth : void 0
+	        hoverSize: this.refs.container ? Math.max(this.refs.container.offsetWidth, this.refs.container.offsetHeight) : void 0
 	      });
 	    }
 	
@@ -251,7 +253,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'handleMouseEnter',
 	    value: function handleMouseEnter() {
-	      if (this.props.disabled) {
+	      if (this.props.disabled || this.props.disableHover) {
 	        return;
 	      }
 	      this.setState({
@@ -318,7 +320,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (typeof this.props.icon === 'string') {
 	        return _react2.default.createElement('span', { className: _button2.default.icon + ' ' + this.props.iconPrefix + this.props.icon, __source: {
 	            fileName: '../../../../strict-loader/index.js!/Users/Isaac/src/react-buttons/node_modules/eslint-loader/index.js!/Users/Isaac/src/react-buttons/src/Button.jsx',
-	            lineNumber: 143
+	            lineNumber: 145
 	          }
 	        });
 	      } else {
@@ -331,7 +333,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (typeof this.props.href === 'string' && this.props.href.length > 0) {
 	        return 'a';
 	      } else {
-	        return this.props.tag;
+	        return 'div';
+	        // return this.props.tag; FF isn't triggereing on <buttons>
 	      }
 	    }
 	
@@ -348,9 +351,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var btnClasses = (0, _classnames2.default)(_button2.default.btn, this.props.className, _button2.default[this.props.type], (_classNames = {}, _defineProperty(_classNames, _button2.default.disabled, this.props.disabled), _defineProperty(_classNames, _button2.default.pressed, this.state.pressed), _classNames));
 	
 	      var hoverStyles = {};
-	      if (this.state.width) {
+	      if (this.state.hoverSize) {
 	        // Ensure it covers the button
-	        hoverStyles.width = this.state.width * 1.2;
+	        hoverStyles.width = this.state.hoverSize * 1.3;
 	        hoverStyles.height = hoverStyles.width;
 	
 	        // Center it
@@ -382,7 +385,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _extends({}, props, {
 	          __source: {
 	            fileName: '../../../../strict-loader/index.js!/Users/Isaac/src/react-buttons/node_modules/eslint-loader/index.js!/Users/Isaac/src/react-buttons/src/Button.jsx',
-	            lineNumber: 203
+	            lineNumber: 206
 	          }
 	        }),
 	        _react2.default.createElement(
@@ -391,10 +394,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	            className: _button2.default.container,
 	            disabled: this.props.disabled, __source: {
 	              fileName: '../../../../strict-loader/index.js!/Users/Isaac/src/react-buttons/node_modules/eslint-loader/index.js!/Users/Isaac/src/react-buttons/src/Button.jsx',
-	              lineNumber: 204
+	              lineNumber: 207
 	            }
 	          },
-	          this.renderInnerContents(),
+	          this.props.children,
+	          typeof this.props.icon === 'string' ? _react2.default.createElement('span', { className: _button2.default.icon + ' ' + this.props.iconPrefix + this.props.icon, __source: {
+	              fileName: '../../../../strict-loader/index.js!/Users/Isaac/src/react-buttons/node_modules/eslint-loader/index.js!/Users/Isaac/src/react-buttons/src/Button.jsx',
+	              lineNumber: 211
+	            }
+	          }) : null,
 	          _react2.default.createElement(
 	            _reactAddonsCssTransitionGroup2.default,
 	            {
@@ -403,13 +411,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	              transitionEnterTimeout: 500,
 	              transitionLeaveTimeout: 500, __source: {
 	                fileName: '../../../../strict-loader/index.js!/Users/Isaac/src/react-buttons/node_modules/eslint-loader/index.js!/Users/Isaac/src/react-buttons/src/Button.jsx',
-	                lineNumber: 208
+	                lineNumber: 212
 	              }
 	            },
 	            this.state.hover ? _react2.default.createElement('div', { className: _button2.default.hoverEffect,
 	              style: hoverStyles, __source: {
 	                fileName: '../../../../strict-loader/index.js!/Users/Isaac/src/react-buttons/node_modules/eslint-loader/index.js!/Users/Isaac/src/react-buttons/src/Button.jsx',
-	                lineNumber: 214
+	                lineNumber: 218
 	              }
 	            }) : null
 	          )
@@ -434,7 +442,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  onClick: _react2.default.PropTypes.func,
 	  icon: _react2.default.PropTypes.string,
 	  iconPrefix: _react2.default.PropTypes.string,
-	  disabled: _react2.default.PropTypes.bool
+	  disabled: _react2.default.PropTypes.bool,
+	  disableHover: _react2.default.PropTypes.bool
 	};
 	
 	/**
@@ -442,6 +451,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @type {Object}
 	 */
 	Button.defaultProps = {
+	  disableHover: false,
 	  iconPrefix: 'icon-',
 	  disabled: false,
 	  pressedTimeout: 500,
@@ -453,10 +463,17 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 3 */
 /***/ function(module, exports) {
 
-	module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
+	// removed by extract-text-webpack-plugin
+	module.exports = {"btn":"button--btn","aui-button":"button--aui-button","disabled":"button--disabled","container":"button--container","hoverEffect":"button--hoverEffect","hoverContainer":"button--hoverContainer","enter":"button--enter","enterActive":"button--enterActive","leave":"button--leave","leaveActive":"button--leaveActive","icon":"button--icon","action":"button--action","raised":"button--raised","pressed":"button--pressed","flat":"button--flat","group":"button--group","fill":"button--fill","right":"button--right","left":"button--left"};
 
 /***/ },
 /* 4 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_4__;
+
+/***/ },
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict'
@@ -480,13 +497,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _classnames = __webpack_require__(3);
+	var _classnames = __webpack_require__(4);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _buttonGroup = __webpack_require__(7);
+	var _button = __webpack_require__(3);
 	
-	var _buttonGroup2 = _interopRequireDefault(_buttonGroup);
+	var _button2 = _interopRequireDefault(_button);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -512,7 +529,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function render() {
 	      var _classNames;
 	
-	      var classes = (0, _classnames2.default)(this.props.className, _buttonGroup2.default.group, (_classNames = {}, _defineProperty(_classNames, _buttonGroup2.default.fill, this.props.fill === true), _defineProperty(_classNames, _buttonGroup2.default.right, this.props.align === 'right'), _defineProperty(_classNames, _buttonGroup2.default.left, this.props.align === 'left'), _classNames));
+	      var classes = (0, _classnames2.default)(this.props.className, _button2.default.group, (_classNames = {}, _defineProperty(_classNames, _button2.default.fill, this.props.fill === true), _defineProperty(_classNames, _button2.default.right, this.props.align === 'right'), _defineProperty(_classNames, _button2.default.left, this.props.align === 'left'), _classNames));
 	      return _react2.default.createElement(
 	        'div',
 	        { className: classes, __source: {
@@ -540,7 +557,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict'
@@ -605,7 +622,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = FloatingActionButton;
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict'
@@ -670,30 +687,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = RaisedButton;
 
 /***/ },
-/* 7 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-	module.exports = {"group":"button-group--group","fill":"button-group--fill","right":"button-group--right","left":"button-group--left"};
-
-/***/ },
 /* 8 */
 /***/ function(module, exports) {
 
-	// removed by extract-text-webpack-plugin
-	module.exports = {"btn":"button--btn","aui-button":"button--aui-button","disabled":"button--disabled","container":"button--container","hoverEffect":"button--hoverEffect","hoverContainer":"button--hoverContainer","enter":"button--enter","enterActive":"button--enterActive","leave":"button--leave","leaveActive":"button--leaveActive","icon":"button--icon","action":"button--action","raised":"button--raised","pressed":"button--pressed","flat":"button--flat"};
+	module.exports = __WEBPACK_EXTERNAL_MODULE_8__;
 
 /***/ },
 /* 9 */
 /***/ function(module, exports) {
 
 	module.exports = __WEBPACK_EXTERNAL_MODULE_9__;
-
-/***/ },
-/* 10 */
-/***/ function(module, exports) {
-
-	module.exports = __WEBPACK_EXTERNAL_MODULE_10__;
 
 /***/ }
 /******/ ])
