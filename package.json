@@ -6,7 +6,8 @@
   "scripts": {
     "start": "grunt server",
     "build": "grunt build",
-    "test": "./node_modules/jest-cli/bin/jest.js src/ --coverage"
+    "test": "./node_modules/jest-cli/bin/jest.js src/ --coverage",
+    "coverage" : "cat ./coverage/lcov.info | CODACY_PROJECT_TOKEN=eea220c3c69340b49517f68a22f9315f ./node_modules/.bin/codacy-coverage"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "babel-preset-es2015": "^6.1.4",
     "babel-preset-react": "^6.1.4",
     "classnames": "^2.2.0",
+    "codacy-coverage": "^1.1.3",
     "css-loader": "^0.22.0",
     "eslint": "^1.9.0",
     "eslint-loader": "^1.1.1",
