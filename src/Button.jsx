@@ -150,8 +150,7 @@ export default class Button extends React.Component {
     if (typeof this.props.href === 'string' && this.props.href.length > 0) {
       return 'a';
     } else {
-      return 'div';
-      // return this.props.tag; FF isn't triggereing on <buttons>
+      return this.props.tag; // FF isn't triggereing on <buttons>
     }
   }
 
@@ -247,6 +246,6 @@ Button.defaultProps = {
   iconPrefix: 'icon-',
   disabled: false,
   pressedTimeout: 500,
-  tag: 'button',
+  tag: 'div',
   type: 'flat'
 };
