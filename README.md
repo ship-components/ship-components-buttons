@@ -1,6 +1,8 @@
 # react-buttons
 [React](http://facebook.github.io/react/) buttons. Exports a commonjs module that can be used with [webpack](http://webpack.github.io/). Source is in ES6 and is compiled down to ES5 using [Babel](https://babeljs.io/).
 
+[![Build Status](http://img.shields.io/travis/ship-components/react-buttons/master.svg?style=flat)](https://travis-ci.org/ship-components/react-buttons)
+
 ## Usage
 
 ### ES6/JSX (Recommended)
