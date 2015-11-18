@@ -196,18 +196,4 @@ describe('Button', function(){
     let node = TestUtils.findRenderedDOMComponentWithClass(reactTree, 'icon-add');
     expect(node).toBeDefined()
   });
-
-  it('should default to a div if the tag is not a string', function() {
-    let className = 'testClass';
-    let reactTree = TestUtils.renderIntoDocument(
-      <Button
-          className={className}
-          onClick={noOp}
-          tag={{}} />
-    );
-
-    let el = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
-    expect(ReactDOM.findDOMNode(el).tagName.toLowerCase()).toEqual('div');
-  });
-
 });
