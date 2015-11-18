@@ -131,17 +131,9 @@ export default class Button extends React.Component {
   }
 
   /**
-   * Render either an icon or the childrne of the component
-   * @return {React}
+   * The tag devirved from the propTypes
+   * @return {String}
    */
-  renderInnerContents() {
-    if (typeof this.props.icon === 'string') {
-      return <span className={css.icon + ' ' + this.props.iconPrefix + this.props.icon} />
-    } else {
-      return this.props.children;
-    }
-  }
-
   getTag() {
     if (typeof this.props.href === 'string' && this.props.href.length > 0) {
       return 'a';
