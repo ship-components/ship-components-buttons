@@ -103,11 +103,10 @@ export default class Button extends React.Component {
   }
 
   /**
-   * Handle the clicks. Toggles pressed state. Optionally call callback
-   * when the pressed stated is removed
+   * Handle the clicks. Toggles pressed state
    * @param  {Event]} event
    */
-  handleClick(event, callback) {
+  handleClick(event) {
 
     if (this.props.disabled) {
       event.stopPropagation();
@@ -127,9 +126,6 @@ export default class Button extends React.Component {
         this.setState({
           pressed: false
         });
-        if (typeof callback === 'function') {
-          callback(event);
-        }
       }, this.props.pressedTimeout);
     });
   }
