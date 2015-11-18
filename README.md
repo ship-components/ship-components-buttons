@@ -2,6 +2,7 @@
 [React](http://facebook.github.io/react/) buttons. Exports a commonjs module that can be used with [webpack](http://webpack.github.io/). Source is in ES6 and is compiled down to ES5 using [Babel](https://babeljs.io/).
 
 [![Build Status](http://img.shields.io/travis/ship-components/react-buttons/master.svg?style=flat)](https://travis-ci.org/ship-components/react-buttons)
+[![Coverage](http://img.shields.io/coveralls/ship-components/react-buttons.svg?style=flat)](https://coveralls.io/github/ship-components)
 [![devDependencies](https://img.shields.io/david/dev/ship-components/react-buttons.svg?style=flat)](https://david-dm.org/ship-components/react-buttons#info=devDependencies)
 
 ## Usage
