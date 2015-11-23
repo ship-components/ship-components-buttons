@@ -45,7 +45,9 @@ export default class Button extends React.Component {
    * @return {Boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.hover !== nextState.hover) {
+    if (this.props.className !== nextProps.className) {
+      return true;
+    } else if (this.state.hover !== nextState.hover) {
       return true;
     } else if (this.state.pressed !== nextState.pressed) {
       return true;

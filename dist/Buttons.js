@@ -119,8 +119,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
@@ -201,7 +199,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'shouldComponentUpdate',
 	    value: function shouldComponentUpdate(nextProps, nextState) {
-	      if (this.state.hover !== nextState.hover) {
+	      if (this.props.className !== nextProps.className) {
+	        return true;
+	      } else if (this.state.hover !== nextState.hover) {
 	        return true;
 	      } else if (this.state.pressed !== nextState.pressed) {
 	        return true;
@@ -274,14 +274,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	
 	    /**
-	     * Handle the clicks. Toggles pressed state. Optionally call callback
-	     * when the pressed stated is removed
+	     * Handle the clicks. Toggles pressed state
 	     * @param  {Event]} event
 	     */
 	
 	  }, {
 	    key: 'handleClick',
-	    value: function handleClick(event, callback) {
+	    value: function handleClick(event) {
 	      var _this = this;
 	
 	      if (this.props.disabled) {
@@ -302,39 +301,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	          _this.setState({
 	            pressed: false
 	          });
-	          if (typeof callback === 'function') {
-	            callback(event);
-	          }
 	        }, _this.props.pressedTimeout);
 	      });
 	    }
 	
 	    /**
-	     * Render either an icon or the childrne of the component
-	     * @return {React}
+	     * The tag devirved from the propTypes
+	     * @return {String}
 	     */
 	
-	  }, {
-	    key: 'renderInnerContents',
-	    value: function renderInnerContents() {
-	      if (typeof this.props.icon === 'string') {
-	        return _react2.default.createElement('span', { className: _button2.default.icon + ' ' + this.props.iconPrefix + this.props.icon, __source: {
-	            fileName: '../../../../strict-loader/index.js!/Users/Isaac/src/react-buttons/node_modules/eslint-loader/index.js!/Users/Isaac/src/react-buttons/src/Button.jsx',
-	            lineNumber: 145
-	          }
-	        });
-	      } else {
-	        return this.props.children;
-	      }
-	    }
 	  }, {
 	    key: 'getTag',
 	    value: function getTag() {
 	      if (typeof this.props.href === 'string' && this.props.href.length > 0) {
 	        return 'a';
 	      } else {
-	        return 'div';
-	        // return this.props.tag; FF isn't triggereing on <buttons>
+	        return this.props.tag; // FF isn't triggereing on <buttons>
 	      }
 	    }
 	
@@ -382,44 +364,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      return _react2.default.createElement(
 	        this.tagName,
-	        _extends({}, props, {
-	          __source: {
-	            fileName: '../../../../strict-loader/index.js!/Users/Isaac/src/react-buttons/node_modules/eslint-loader/index.js!/Users/Isaac/src/react-buttons/src/Button.jsx',
-	            lineNumber: 206
-	          }
-	        }),
+	        props,
 	        _react2.default.createElement(
 	          _reactHighlightClick2.default,
 	          {
 	            className: _button2.default.container,
-	            disabled: this.props.disabled, __source: {
-	              fileName: '../../../../strict-loader/index.js!/Users/Isaac/src/react-buttons/node_modules/eslint-loader/index.js!/Users/Isaac/src/react-buttons/src/Button.jsx',
-	              lineNumber: 207
-	            }
-	          },
+	            disabled: this.props.disabled },
 	          this.props.children,
-	          typeof this.props.icon === 'string' ? _react2.default.createElement('span', { className: _button2.default.icon + ' ' + this.props.iconPrefix + this.props.icon, __source: {
-	              fileName: '../../../../strict-loader/index.js!/Users/Isaac/src/react-buttons/node_modules/eslint-loader/index.js!/Users/Isaac/src/react-buttons/src/Button.jsx',
-	              lineNumber: 211
-	            }
-	          }) : null,
+	          typeof this.props.icon === 'string' ? _react2.default.createElement('span', { className: _button2.default.icon + ' ' + this.props.iconPrefix + this.props.icon }) : null,
 	          _react2.default.createElement(
 	            _reactAddonsCssTransitionGroup2.default,
 	            {
 	              className: _button2.default.hoverContainer,
 	              transitionName: _button2.default,
 	              transitionEnterTimeout: 500,
-	              transitionLeaveTimeout: 500, __source: {
-	                fileName: '../../../../strict-loader/index.js!/Users/Isaac/src/react-buttons/node_modules/eslint-loader/index.js!/Users/Isaac/src/react-buttons/src/Button.jsx',
-	                lineNumber: 212
-	              }
-	            },
+	              transitionLeaveTimeout: 500 },
 	            this.state.hover ? _react2.default.createElement('div', { className: _button2.default.hoverEffect,
-	              style: hoverStyles, __source: {
-	                fileName: '../../../../strict-loader/index.js!/Users/Isaac/src/react-buttons/node_modules/eslint-loader/index.js!/Users/Isaac/src/react-buttons/src/Button.jsx',
-	                lineNumber: 218
-	              }
-	            }) : null
+	              style: hoverStyles }) : null
 	          )
 	        )
 	      );
@@ -455,7 +416,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  iconPrefix: 'icon-',
 	  disabled: false,
 	  pressedTimeout: 500,
-	  tag: 'button',
+	  tag: 'div',
 	  type: 'flat'
 	};
 
@@ -532,11 +493,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var classes = (0, _classnames2.default)(this.props.className, _button2.default.group, (_classNames = {}, _defineProperty(_classNames, _button2.default.fill, this.props.fill === true), _defineProperty(_classNames, _button2.default.right, this.props.align === 'right'), _defineProperty(_classNames, _button2.default.left, this.props.align === 'left'), _classNames));
 	      return _react2.default.createElement(
 	        'div',
-	        { className: classes, __source: {
-	            fileName: '../../../../strict-loader/index.js!/Users/Isaac/src/react-buttons/node_modules/eslint-loader/index.js!/Users/Isaac/src/react-buttons/src/ButtonGroup.jsx',
-	            lineNumber: 26
-	          }
-	        },
+	        { className: classes },
 	        this.props.children
 	      );
 	    }
@@ -608,11 +565,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(_Button2.default, _extends({}, this.props, {
-	        type: 'action', __source: {
-	          fileName: '../../../../strict-loader/index.js!/Users/Isaac/src/react-buttons/node_modules/eslint-loader/index.js!/Users/Isaac/src/react-buttons/src/FloatingActionButton.jsx',
-	          lineNumber: 16
-	        }
-	      }));
+	        type: 'action' }));
 	    }
 	  }]);
 	
@@ -673,11 +626,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(_Button2.default, _extends({}, this.props, {
-	        type: 'raised', __source: {
-	          fileName: '../../../../strict-loader/index.js!/Users/Isaac/src/react-buttons/node_modules/eslint-loader/index.js!/Users/Isaac/src/react-buttons/src/RaisedButton.jsx',
-	          lineNumber: 16
-	        }
-	      }));
+	        type: 'raised' }));
 	    }
 	  }]);
 	
