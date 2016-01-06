@@ -10,10 +10,12 @@ import button from './Button';
 import floatingActionButton from './FloatingActionButton';
 import raisedButton from './RaisedButton';
 import buttonGroup from './ButtonGroup';
+import iconButton from './IconButton';
 
 export const Button = button;
 export const FloatingActionButton = floatingActionButton;
 export const RaisedButton = raisedButton;
 export const ButtonGroup = buttonGroup;
+export const IconButton = iconButton;
 
 export default Button;

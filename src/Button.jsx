@@ -219,7 +219,7 @@ export default class Button extends React.Component {
 Button.propTypes = {
   tag: React.PropTypes.string,
   href: React.PropTypes.string,
-  type: React.PropTypes.oneOf(['flat', 'action', 'raised']),
+  type: React.PropTypes.oneOf(['flat', 'action', 'raised', 'iconButton']),
   onClick: React.PropTypes.func,
   icon: React.PropTypes.string,
   iconPrefix: React.PropTypes.string,
