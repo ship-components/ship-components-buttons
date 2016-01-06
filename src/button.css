@@ -179,7 +179,7 @@ span + .icon {
 }
 
 .group {
-  display: block;
+  display: flex;
   .btn {
     width: 100%;
     flex-grow: 1
@@ -200,8 +200,10 @@ span + .icon {
 
 .right {
   text-align: right;
+  justify-content: flex-end;
 }
 
 .left {
   text-align: left;
+  justify-content: flex-start;
 }
