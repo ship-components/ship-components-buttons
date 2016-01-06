@@ -17,7 +17,6 @@
   cursor: pointer;
   vertical-align: top;
   text-align: center;
-  flex-grow: 1;
   &:disabled {
     cursor: not-allowed;
   }
@@ -172,6 +171,10 @@ span + .icon {
 
 .group {
   display: block;
+  .btn {
+    width: 100%;
+    flex-grow: 1
+  }
 }
 
 .group .btn:first-child  {
