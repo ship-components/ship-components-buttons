@@ -41,7 +41,7 @@
 }
 
 .hoverEffect {
-  background-color: color(#42aa65 a(0.1));
+  background-color: color($primary-color a(0.1));
   left: 50%;
   margin-left: -50px;
   top: 50%;
