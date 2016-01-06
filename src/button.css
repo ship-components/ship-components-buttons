@@ -31,6 +31,10 @@
   }
 }
 
+.wrapper {
+
+}
+
 .disabled {
   cursor: not-allowed;
   .container {
@@ -113,7 +117,9 @@
 span + .icon {
   margin-left: 6px;
 }
-.action .icon {
+
+.action .icon,
+.iconButton .icon {
   font-size: 30px;
   vertical-align: baseline;
   margin-left: 0;
@@ -123,7 +129,8 @@ span + .icon {
  * Consistent Shadow
  */
 .action,
-.raised {
+.raised,
+.iconButton:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -134,7 +141,8 @@ span + .icon {
 /**
  * Floating Action Button
  */
-.action {
+.action,
+.iconButton {
   width: 48px;
   height: 48px;
   text-align: center;
@@ -157,12 +165,13 @@ span + .icon {
  */
 .pressed {
   &.action,
-  &.raised {
+  &.raised,
+  &.iconButton {
     transform: translateY(2px);
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
   }
   &.flat {
-    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
     .container {
       transform: translateY(1px);
     }

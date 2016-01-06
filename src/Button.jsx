@@ -11,6 +11,8 @@ import classNames from 'classnames';
 import HighlightClick from 'react-highlight-click';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
+import Tooltip from './Tooltip';
+
 // Local
 import css from './button.css';
 
@@ -87,7 +89,7 @@ export default class Button extends React.Component {
    * Let the button now the mouse is here
    */
   handleMouseEnter() {
-    if (this.props.disabled || this.props.disableHover) {
+    if (this.props.disabled) {
       return;
     }
     this.setState({
@@ -151,7 +153,6 @@ export default class Button extends React.Component {
   render() {
     let btnClasses = classNames(
       css.btn,
-      this.props.className,
       css[this.props.type],
       {
         [css.disabled] : this.props.disabled,
@@ -190,24 +191,32 @@ export default class Button extends React.Component {
     }
 
     return (
-      <this.tagName {...props}>
-        <HighlightClick
-          className={css.container}
-          disabled={this.props.disabled}>
-            {this.props.children}
-            {typeof this.props.icon === 'string' ? <span className={css.icon + ' ' + this.props.iconPrefix + this.props.icon} /> : null}
-            <ReactCSSTransitionGroup
-              className={css.hoverContainer}
-              transitionName={css}
-              transitionEnterTimeout={500}
-              transitionLeaveTimeout={500} >
-              {this.state.hover ?
-                <div className={css.hoverEffect}
-                  style={hoverStyles}/>
-              : null}
-            </ReactCSSTransitionGroup>
-        </HighlightClick>
-      </this.tagName>
+      <div className={classNames(css.wrapper, this.props.className)}>
+        <this.tagName {...props}>
+          <HighlightClick
+            className={css.container}
+            disabled={this.props.disabled}>
+              {this.props.children}
+              {typeof this.props.iconClass === 'string' ? <span className={css.icon + ' ' + this.props.iconClass} /> : null}
+              {typeof this.props.icon === 'string' ? <span className={css.icon + ' ' + this.props.iconPrefix + this.props.icon} /> : null}
+              <ReactCSSTransitionGroup
+                className={css.hoverContainer}
+                transitionName={css}
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={500} >
+                {this.state.hover && !this.props.disableHover ?
+                  <div className={css.hoverEffect}
+                    style={hoverStyles}/>
+                : null}
+              </ReactCSSTransitionGroup>
+          </HighlightClick>
+        </this.tagName>
+        {this.props.tooltip ?
+          <Tooltip
+            text={this.props.tooltip}
+            visible={this.state.hover} />
+        : null}
+      </div>
     );
   }
 }
@@ -217,10 +226,12 @@ export default class Button extends React.Component {
  * @type {Object}
  */
 Button.propTypes = {
+  tooltip: React.PropTypes.string,
   tag: React.PropTypes.string,
   href: React.PropTypes.string,
   type: React.PropTypes.oneOf(['flat', 'action', 'raised', 'iconButton']),
   onClick: React.PropTypes.func,
+  iconClass: React.PropTypes.string,
   icon: React.PropTypes.string,
   iconPrefix: React.PropTypes.string,
   disabled: React.PropTypes.bool,
@@ -235,7 +246,7 @@ Button.defaultProps = {
   disableHover: false,
   iconPrefix: 'icon-',
   disabled: false,
-  pressedTimeout: 500,
+  pressedTimeout: 300,
   tag: 'div',
   type: 'flat'
 };
