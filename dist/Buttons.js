@@ -7,7 +7,7 @@
 		var a = typeof exports === 'object' ? factory(require("React"), require("classnames"), require("react-addons-css-transition-group"), require("react-highlight-click")) : factory(root["React"], root["classnames"], root["react-addons-css-transition-group"], root["react-highlight-click"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_8__, __WEBPACK_EXTERNAL_MODULE_9__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_12__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -68,23 +68,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.ButtonGroup = exports.RaisedButton = exports.FloatingActionButton = exports.Button = undefined;
+	exports.IconButton = exports.ButtonGroup = exports.RaisedButton = exports.FloatingActionButton = exports.Button = undefined;
 	
 	var _Button = __webpack_require__(2);
 	
 	var _Button2 = _interopRequireDefault(_Button);
 	
-	var _FloatingActionButton = __webpack_require__(6);
+	var _FloatingActionButton = __webpack_require__(7);
 	
 	var _FloatingActionButton2 = _interopRequireDefault(_FloatingActionButton);
 	
-	var _RaisedButton = __webpack_require__(7);
+	var _RaisedButton = __webpack_require__(9);
 	
 	var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 	
-	var _ButtonGroup = __webpack_require__(5);
+	var _ButtonGroup = __webpack_require__(6);
 	
 	var _ButtonGroup2 = _interopRequireDefault(_ButtonGroup);
+	
+	var _IconButton = __webpack_require__(8);
+	
+	var _IconButton2 = _interopRequireDefault(_IconButton);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -92,6 +96,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var FloatingActionButton = exports.FloatingActionButton = _FloatingActionButton2.default;
 	var RaisedButton = exports.RaisedButton = _RaisedButton2.default;
 	var ButtonGroup = exports.ButtonGroup = _ButtonGroup2.default;
+	var IconButton = exports.IconButton = _IconButton2.default;
 	
 	exports.default = Button;
 
@@ -131,13 +136,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _reactHighlightClick = __webpack_require__(9);
+	var _reactHighlightClick = __webpack_require__(12);
 	
 	var _reactHighlightClick2 = _interopRequireDefault(_reactHighlightClick);
 	
-	var _reactAddonsCssTransitionGroup = __webpack_require__(8);
+	var _reactAddonsCssTransitionGroup = __webpack_require__(5);
 	
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
+	
+	var _Tooltip = __webpack_require__(10);
+	
+	var _Tooltip2 = _interopRequireDefault(_Tooltip);
 	
 	var _button = __webpack_require__(3);
 	
@@ -209,6 +218,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return true;
 	      } else if (this.state.hoverSize !== nextState.hoverSize) {
 	        return true;
+	      } else if (this.props.iconClass !== nextProps.iconClass) {
+	        return true;
 	      } else {
 	        return false;
 	      }
@@ -253,7 +264,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'handleMouseEnter',
 	    value: function handleMouseEnter() {
-	      if (this.props.disabled || this.props.disableHover) {
+	      if (this.props.disabled) {
 	        return;
 	      }
 	      this.setState({
@@ -321,6 +332,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	
 	    /**
+	     * Get the icon
+	     * @return {React}
+	     */
+	
+	  }, {
+	    key: 'renderIcon',
+	    value: function renderIcon() {
+	      if (typeof this.props.iconClass === 'string') {
+	        return _react2.default.createElement('span', { className: _button2.default.icon + ' ' + this.props.iconClass });
+	      } else if (typeof this.props.icon === 'string') {
+	        return _react2.default.createElement('span', { className: _button2.default.icon + ' ' + this.props.iconPrefix + this.props.icon });
+	      } else {
+	        return null;
+	      }
+	    }
+	
+	    /**
 	     * Render
 	     * @return {React}
 	     */
@@ -330,7 +358,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function render() {
 	      var _classNames;
 	
-	      var btnClasses = (0, _classnames2.default)(_button2.default.btn, this.props.className, _button2.default[this.props.type], (_classNames = {}, _defineProperty(_classNames, _button2.default.disabled, this.props.disabled), _defineProperty(_classNames, _button2.default.pressed, this.state.pressed), _classNames));
+	      var btnClasses = (0, _classnames2.default)(_button2.default.btn, _button2.default[this.props.type], (_classNames = {}, _defineProperty(_classNames, _button2.default.disabled, this.props.disabled), _defineProperty(_classNames, _button2.default.pressed, this.state.pressed), _classNames));
 	
 	      var hoverStyles = {};
 	      if (this.state.hoverSize) {
@@ -363,26 +391,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	
 	      return _react2.default.createElement(
-	        this.tagName,
-	        props,
+	        'div',
+	        { className: (0, _classnames2.default)(_button2.default.wrapper, this.props.className) },
 	        _react2.default.createElement(
-	          _reactHighlightClick2.default,
-	          {
-	            className: _button2.default.container,
-	            disabled: this.props.disabled },
-	          this.props.children,
-	          typeof this.props.icon === 'string' ? _react2.default.createElement('span', { className: _button2.default.icon + ' ' + this.props.iconPrefix + this.props.icon }) : null,
+	          this.tagName,
+	          props,
 	          _react2.default.createElement(
-	            _reactAddonsCssTransitionGroup2.default,
+	            _reactHighlightClick2.default,
 	            {
-	              className: _button2.default.hoverContainer,
-	              transitionName: _button2.default,
-	              transitionEnterTimeout: 500,
-	              transitionLeaveTimeout: 500 },
-	            this.state.hover ? _react2.default.createElement('div', { className: _button2.default.hoverEffect,
-	              style: hoverStyles }) : null
+	              className: _button2.default.container,
+	              disabled: this.props.disabled },
+	            this.props.children,
+	            this.renderIcon(),
+	            _react2.default.createElement(
+	              _reactAddonsCssTransitionGroup2.default,
+	              {
+	                className: _button2.default.hoverContainer,
+	                transitionName: _button2.default,
+	                transitionEnterTimeout: 500,
+	                transitionLeaveTimeout: 500 },
+	              this.state.hover && !this.props.disableHover ? _react2.default.createElement('div', { className: _button2.default.hoverEffect,
+	                style: hoverStyles }) : null
+	            )
 	          )
-	        )
+	        ),
+	        this.props.tooltip ? _react2.default.createElement(_Tooltip2.default, {
+	          text: this.props.tooltip,
+	          visible: this.state.hover }) : null
 	      );
 	    }
 	  }]);
@@ -397,10 +432,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	exports.default = Button;
 	Button.propTypes = {
+	  tooltip: _react2.default.PropTypes.string,
 	  tag: _react2.default.PropTypes.string,
 	  href: _react2.default.PropTypes.string,
-	  type: _react2.default.PropTypes.oneOf(['flat', 'action', 'raised']),
+	  type: _react2.default.PropTypes.oneOf(['flat', 'action', 'raised', 'iconButton']),
 	  onClick: _react2.default.PropTypes.func,
+	  iconClass: _react2.default.PropTypes.string,
 	  icon: _react2.default.PropTypes.string,
 	  iconPrefix: _react2.default.PropTypes.string,
 	  disabled: _react2.default.PropTypes.bool,
@@ -415,7 +452,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  disableHover: false,
 	  iconPrefix: 'icon-',
 	  disabled: false,
-	  pressedTimeout: 500,
+	  pressedTimeout: 300,
 	  tag: 'div',
 	  type: 'flat'
 	};
@@ -425,7 +462,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"btn":"button--btn","aui-button":"button--aui-button","disabled":"button--disabled","container":"button--container","hoverEffect":"button--hoverEffect","hoverContainer":"button--hoverContainer","enter":"button--enter","enterActive":"button--enterActive","leave":"button--leave","leaveActive":"button--leaveActive","icon":"button--icon","action":"button--action","raised":"button--raised","pressed":"button--pressed","flat":"button--flat","group":"button--group","fill":"button--fill","right":"button--right","left":"button--left"};
+	module.exports = {"btn":"button--btn","aui-button":"button--aui-button","wrapper":"button--wrapper","disabled":"button--disabled","container":"button--container","hoverEffect":"button--hoverEffect","hoverContainer":"button--hoverContainer","enter":"button--enter","enterActive":"button--enterActive","leave":"button--leave","leaveActive":"button--leaveActive","icon":"button--icon","action":"button--action","iconButton":"button--iconButton","raised":"button--raised","pressed":"button--pressed","flat":"button--flat","group":"button--group","fill":"button--fill","right":"button--right","left":"button--left"};
 
 /***/ },
 /* 4 */
@@ -435,6 +472,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 5 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
+
+/***/ },
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict'
@@ -514,7 +557,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict'
@@ -575,7 +618,68 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = FloatingActionButton;
 
 /***/ },
-/* 7 */
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict'
+	
+	/** ****************************************************************************
+	 * FloatingActionButton
+	 *
+	 * @author       Isaac Suttell <isaac_suttell@playstation.sony.com>
+	 * @file         Shortcut for Button
+	 ******************************************************************************/
+	
+	;
+	
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Button = __webpack_require__(2);
+	
+	var _Button2 = _interopRequireDefault(_Button);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var FloatingActionButton = (function (_React$Component) {
+	  _inherits(FloatingActionButton, _React$Component);
+	
+	  function FloatingActionButton() {
+	    _classCallCheck(this, FloatingActionButton);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(FloatingActionButton).apply(this, arguments));
+	  }
+	
+	  _createClass(FloatingActionButton, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(_Button2.default, _extends({}, this.props, {
+	        type: 'iconButton' }));
+	    }
+	  }]);
+	
+	  return FloatingActionButton;
+	})(_react2.default.Component);
+	
+	exports.default = FloatingActionButton;
+
+/***/ },
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict'
@@ -636,16 +740,117 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = RaisedButton;
 
 /***/ },
-/* 8 */
-/***/ function(module, exports) {
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __WEBPACK_EXTERNAL_MODULE_8__;
+	'use strict'
+	
+	/** ****************************************************************************
+	 * Tooltip
+	 *
+	 * @author       Isaac Suttell <isaac_suttell@playstation.sony.com>
+	 * @file         Material Design Button
+	 ******************************************************************************/
+	
+	// External Modules
+	;
+	
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactAddonsCssTransitionGroup = __webpack_require__(5);
+	
+	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
+	
+	var _tooltip = __webpack_require__(11);
+	
+	var _tooltip2 = _interopRequireDefault(_tooltip);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	// Local
+	
+	var Tooltip = (function (_React$Component) {
+	  _inherits(Tooltip, _React$Component);
+	
+	  function Tooltip() {
+	    _classCallCheck(this, Tooltip);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Tooltip).apply(this, arguments));
+	  }
+	
+	  _createClass(Tooltip, [{
+	    key: 'render',
+	
+	    /**
+	     * Render
+	     * @return {React}
+	     */
+	    value: function render() {
+	      return _react2.default.createElement(
+	        _reactAddonsCssTransitionGroup2.default,
+	        {
+	          className: _tooltip2.default.container,
+	          component: 'div',
+	          transitionName: _tooltip2.default,
+	          transitionEnterTimeout: 250,
+	          transitionLeaveTimeout: 250 },
+	        this.props.visible ? _react2.default.createElement(
+	          'div',
+	          { className: _tooltip2.default.text },
+	          this.props.text
+	        ) : null
+	      );
+	    }
+	  }]);
+	
+	  return Tooltip;
+	})(_react2.default.Component);
+	
+	/**
+	 * Type Checks
+	 * @type {Object}
+	 */
+	
+	exports.default = Tooltip;
+	Tooltip.propTypes = {
+	  text: _react2.default.PropTypes.string,
+	  visible: _react2.default.PropTypes.bool
+	};
+	
+	/**
+	 * Defaults
+	 * @type {Object}
+	 */
+	Tooltip.defaultProps = {
+	  visible: false
+	};
 
 /***/ },
-/* 9 */
+/* 11 */
 /***/ function(module, exports) {
 
-	module.exports = __WEBPACK_EXTERNAL_MODULE_9__;
+	// removed by extract-text-webpack-plugin
+	module.exports = {"container":"tooltip--container","text":"tooltip--text","enter":"tooltip--enter","enterActive":"tooltip--enterActive","leave":"tooltip--leave","leaveActive":"tooltip--leaveActive"};
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_12__;
 
 /***/ }
 /******/ ])

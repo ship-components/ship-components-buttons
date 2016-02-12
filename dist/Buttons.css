@@ -1,3 +1,60 @@
+.tooltip--container {
+  position: relative;
+}
+
+.tooltip--text {
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  padding: 4px;
+  background-color: rgba(100, 100, 100, 0.9);
+  text-align: center;
+  font-size: 12px;
+  border-radius: 2px;
+  opacity: 1;
+  pointer-events: none;
+  line-height: 1;
+  white-space: nowrap;
+  -webkit-transform: translateY(0%) translateX(-50%);
+      -ms-transform: translateY(0%) translateX(-50%);
+          transform: translateY(0%) translateX(-50%);
+  color: #fff;
+}
+
+/**
+ * Hover states
+ */
+.tooltip--enter {
+  opacity: 0;
+  -webkit-transition: 250ms all ease-in;
+  transition: 250ms all ease-in;
+  -webkit-transform: translateY(-30%) translateX(-50%);
+      -ms-transform: translateY(-30%) translateX(-50%);
+          transform: translateY(-30%) translateX(-50%);
+}
+
+.tooltip--enterActive {
+  opacity: 1;
+  -webkit-transform: translateY(0%) translateX(-50%);
+      -ms-transform: translateY(0%) translateX(-50%);
+          transform: translateY(0%) translateX(-50%);
+}
+
+.tooltip--leave {
+  opacity: 1;
+  -webkit-transition: 250ms all ease-out;
+  transition: 250ms all ease-out;
+  -webkit-transform: translateY(0%) translateX(-50%);
+      -ms-transform: translateY(0%) translateX(-50%);
+          transform: translateY(0%) translateX(-50%);
+}
+
+.tooltip--leaveActive {
+  opacity: 0;
+  -webkit-transform: translateY(-30%) translateX(-50%);
+      -ms-transform: translateY(-30%) translateX(-50%);
+          transform: translateY(-30%) translateX(-50%);
+}
 /**
  * Reset
  */
@@ -18,10 +75,6 @@
   cursor: pointer;
   vertical-align: top;
   text-align: center;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
 }
 .button--btn:disabled {
   cursor: not-allowed;
@@ -33,6 +86,10 @@
   .button--btn:visited {
   color: inherit;
   text-decoration: none;
+}
+
+.button--wrapper {
+
 }
 
 .button--disabled {
@@ -129,7 +186,9 @@
 span + .button--icon {
   margin-left: 6px;
 }
-.button--action .button--icon {
+
+.button--action .button--icon,
+.button--iconButton .button--icon {
   font-size: 30px;
   vertical-align: baseline;
   margin-left: 0;
@@ -139,7 +198,8 @@ span + .button--icon {
  * Consistent Shadow
  */
 .button--action,
-.button--raised {
+.button--raised,
+.button--iconButton:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -150,21 +210,22 @@ span + .button--icon {
 /**
  * Floating Action Button
  */
-.button--action {
+.button--action,
+.button--iconButton {
   width: 48px;
   height: 48px;
   text-align: center;
   border-radius: 50%;
   padding: 0;
 }
-.button--action .button--container {
+.button--action .button--container, .button--iconButton .button--container {
   padding: 0;
   width: 48px;
   height: 48px;
   line-height: 48px;
   border-radius: 50%;
 }
-.button--action .button--container .button--icon {
+.button--action .button--container .button--icon, .button--iconButton .button--container .button--icon {
   line-height: 48px !important;/* SHIP HACK */
 }
 
@@ -172,14 +233,15 @@ span + .button--icon {
  * Pressed State
  */
 .button--pressed.button--action,
-  .button--pressed.button--raised {
+  .button--pressed.button--raised,
+  .button--pressed.button--iconButton {
   -webkit-transform: translateY(2px);
       -ms-transform: translateY(2px);
           transform: translateY(2px);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }
 .button--pressed.button--flat {
-  box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 .button--pressed.button--flat .button--container {
   -webkit-transform: translateY(1px);
@@ -188,7 +250,18 @@ span + .button--icon {
 }
 
 .button--group {
-  display: block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.button--group .button--btn {
+  width: 100%;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1
 }
 
 .button--group .button--btn:first-child  {
@@ -208,10 +281,18 @@ span + .button--icon {
 
 .button--right {
   text-align: right;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .button--left {
   text-align: left;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 /*# sourceMappingURL=Buttons.css.map*/

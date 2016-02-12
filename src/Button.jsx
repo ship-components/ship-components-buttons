@@ -57,6 +57,8 @@ export default class Button extends React.Component {
       return true;
     } else if (this.state.hoverSize !== nextState.hoverSize) {
       return true;
+    } else if (this.props.iconClass !== nextProps.iconClass) {
+      return true;
     } else {
       return false;
     }
@@ -147,6 +149,20 @@ export default class Button extends React.Component {
   }
 
   /**
+   * Get the icon
+   * @return {React}
+   */
+  renderIcon() {
+    if(typeof this.props.iconClass === 'string') {
+      return <span className={css.icon + ' ' + this.props.iconClass} />;
+    } else if (typeof this.props.icon === 'string' ) {
+      return <span className={css.icon + ' ' + this.props.iconPrefix + this.props.icon} />
+    } else {
+     return null;
+    }
+  }
+
+  /**
    * Render
    * @return {React}
    */
@@ -197,8 +213,7 @@ export default class Button extends React.Component {
             className={css.container}
             disabled={this.props.disabled}>
               {this.props.children}
-              {typeof this.props.iconClass === 'string' ? <span className={css.icon + ' ' + this.props.iconClass} /> : null}
-              {typeof this.props.icon === 'string' ? <span className={css.icon + ' ' + this.props.iconPrefix + this.props.icon} /> : null}
+              {this.renderIcon()}
               <ReactCSSTransitionGroup
                 className={css.hoverContainer}
                 transitionName={css}
