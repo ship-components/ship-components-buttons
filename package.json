@@ -59,8 +59,8 @@
     "react-highlight-click": "git+https://github.com/ship-components/react-highlight-click.git#master",
     "strict-loader": "^0.1.2",
     "style-loader": "^0.13.0",
-    "webpack": "^1.12.4",
-    "webpack-dev-server": "^1.12.1"
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
   },
   "jest": {
     "scriptPreprocessor": "node_modules/babel-jest",
