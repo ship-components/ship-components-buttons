@@ -53,7 +53,7 @@ which will live reload any changes you make and serve them at http://localhost:8
 This module is designed to be used with webpack but requires a few loaders if you are pulling the source into another project.
 
 ```shell
-$ npm install webpack babel-loader css-loader style-loader postcss-loader extract-text-webpack-plugin postcss-nested postcss-color-hex-alpha postcss-color-function postcss-calc autoprefixer --save-dev
+$ npm install webpack babel-loader css-loader style-loader postcss-loader extract-text-webpack-plugin postcss-nested postcss-color-hex-alpha postcss-color-function postcss-calc postcss-simple-vars autoprefixer --save-dev
 ```
 
 Below are is a sample of how to setup the loaders:
