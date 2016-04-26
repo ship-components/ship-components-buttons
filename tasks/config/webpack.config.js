@@ -37,6 +37,14 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel'
       },
+      // ES6/JSX for external modules
+      {
+        test: /\.(jsx?|es6)$/,
+        include: [
+          /react\-highlight\-click\/src/
+        ],
+        loader: 'babel'
+      },
       // Ensure 'use strict' is everywhere
       {
         test: /\.(jsx?|es6)$/,
