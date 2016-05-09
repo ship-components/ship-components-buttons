@@ -14,7 +14,7 @@ Button.prototype.componentDidUpdate = noOp;
 let shipBtn = 'ship-components-btn';
 
 describe('Button', function(){
-  it('should be wrapped with a div', function() {
+  it('should support button and a tagNames', function() {
     let className = 'testClass';
     ['button', 'a'].forEach(function(tagName){
       let reactTree = TestUtils.renderIntoDocument(
