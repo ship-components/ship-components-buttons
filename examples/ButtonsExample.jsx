@@ -13,6 +13,7 @@ class ButtonsExamples extends React.Component {
         <h1>Button Examples</h1>
         <div className='example-group'>
           <h2>Flat Buttons</h2>
+          <Button>Example #1</Button>
           <ButtonGroup>
             <Button>Example #1</Button>
             <Button>Example #2</Button>
@@ -26,6 +27,7 @@ class ButtonsExamples extends React.Component {
         </div>
         <div className='example-group'>
           <h2>Raised Buttons</h2>
+          <RaisedButton>Example #1</RaisedButton>
           <ButtonGroup>
             <RaisedButton>Example #1</RaisedButton>
             <RaisedButton>Example #2</RaisedButton>
