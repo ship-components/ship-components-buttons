@@ -11,11 +11,12 @@ import TestUtils from 'react-addons-test-utils';
 let Button = require('../Button').default;
 const noOp = function() {};
 Button.prototype.componentDidUpdate = noOp;
+let shipBtn = 'ship-components-btn';
 
 describe('Button', function(){
-  it('should support span and div tagNames', function() {
+  it('should support button and a tagNames', function() {
     let className = 'testClass';
-    ['div', 'span'].forEach(function(tagName){
+    ['button', 'a'].forEach(function(tagName){
       let reactTree = TestUtils.renderIntoDocument(
         <Button
           className={className}
@@ -25,7 +26,7 @@ describe('Button', function(){
 
       let el = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
 
-      expect(ReactDOM.findDOMNode(el).tagName.toLowerCase()).toEqual(tagName.toLowerCase());
+      expect(ReactDOM.findDOMNode(el).childNodes[0].tagName.toLowerCase()).toEqual(tagName.toLowerCase());
     });
   });
 
@@ -35,13 +36,14 @@ describe('Button', function(){
     let reactTree = TestUtils.renderIntoDocument(
       <Button
         className={className}
+        tagName='a'
         href='http://google.com/'
         onClick={noOp} />
     );
 
     let el = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
 
-    expect(ReactDOM.findDOMNode(el).tagName.toLowerCase()).toEqual('a');
+    expect(ReactDOM.findDOMNode(el).childNodes[0].tagName.toLowerCase()).toEqual('a');
   });
 
   it('should support custom css classes', function() {
@@ -68,7 +70,7 @@ describe('Button', function(){
         onClick={onClick} />
     );
 
-    let comp = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
+    let comp = TestUtils.findRenderedDOMComponentWithClass(reactTree, shipBtn);
 
     expect(onClick).not.toBeCalled();
     TestUtils.Simulate.click(comp);
@@ -86,7 +88,7 @@ describe('Button', function(){
     );
 
     let comp = TestUtils.findRenderedComponentWithType(reactTree, Button);
-    let node = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
+    let node = TestUtils.findRenderedDOMComponentWithClass(reactTree, shipBtn);
 
     expect(comp.state.pressed).toBe(false);
     expect(onClick).not.toBeCalled();
@@ -107,7 +109,7 @@ describe('Button', function(){
     );
 
     let comp = TestUtils.findRenderedComponentWithType(reactTree, Button);
-    let node = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
+    let node = TestUtils.findRenderedDOMComponentWithClass(reactTree, shipBtn);
 
     expect(comp.state.hover).toBe(false);
     TestUtils.Simulate.mouseEnter(node);
@@ -167,7 +169,7 @@ describe('Button', function(){
     // Click
     expect(onClick).not.toBeCalled();
     TestUtils.Simulate.click(node);
-    expect(onClick).toBeCalled();
+    expect(onClick).not.toBeCalled();
   });
 
   it('should render children', function() {

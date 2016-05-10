@@ -168,6 +168,7 @@ export default class Button extends React.Component {
    */
   render() {
     let btnClasses = classNames(
+      'ship-components-btn',
       css.btn,
       css[this.props.type],
       {
@@ -262,6 +263,6 @@ Button.defaultProps = {
   iconPrefix: 'icon-',
   disabled: false,
   pressedTimeout: 300,
-  tag: 'div',
+  tag: 'button',
   type: 'flat'
 };
