@@ -24,7 +24,7 @@ describe('Button', function(){
           onClick={noOp} />
       );
 
-      let el = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
+      let el = TestUtils.findRenderedDOMComponentWithClass(reactTree, 'ship-components--btn');
 
       expect(ReactDOM.findDOMNode(el).childNodes[0].tagName.toLowerCase()).toEqual(tagName.toLowerCase());
     });
@@ -41,7 +41,7 @@ describe('Button', function(){
         onClick={noOp} />
     );
 
-    let el = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
+    let el = TestUtils.findRenderedDOMComponentWithClass(reactTree, 'ship-components--btn');
 
     expect(ReactDOM.findDOMNode(el).childNodes[0].tagName.toLowerCase()).toEqual('a');
   });
@@ -55,7 +55,7 @@ describe('Button', function(){
         onClick={noOp} />
     );
 
-    let comp = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
+    let comp = TestUtils.findRenderedDOMComponentWithClass(reactTree, 'ship-components--btn');
 
     expect(comp).toBeDefined();
   });
@@ -130,7 +130,7 @@ describe('Button', function(){
     );
 
     let comp = TestUtils.findRenderedComponentWithType(reactTree, Button);
-    let node = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
+    let node = TestUtils.findRenderedDOMComponentWithClass(reactTree, shipBtn);
 
     // Hovers
     expect(comp.state.hover).toBe(false);
@@ -157,7 +157,7 @@ describe('Button', function(){
     );
 
     let comp = TestUtils.findRenderedComponentWithType(reactTree, Button);
-    let node = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
+    let node = TestUtils.findRenderedDOMComponentWithClass(reactTree, shipBtn);
 
     // Hovers
     expect(comp.state.hover).toBe(false);
@@ -183,7 +183,7 @@ describe('Button', function(){
       </Button>
     );
 
-    let node = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
+    let node = TestUtils.findRenderedDOMComponentWithClass(reactTree, shipBtn);
     expect(node).toBeDefined()
   });
 

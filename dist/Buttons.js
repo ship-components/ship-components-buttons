@@ -358,7 +358,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function render() {
 	      var _classNames;
 	
-	      var btnClasses = (0, _classnames2.default)(_button2.default.btn, _button2.default[this.props.type], (_classNames = {}, _defineProperty(_classNames, _button2.default.disabled, this.props.disabled), _defineProperty(_classNames, _button2.default.pressed, this.state.pressed), _classNames));
+	      var btnClasses = (0, _classnames2.default)('ship-components-btn', _button2.default.btn, _button2.default[this.props.type], (_classNames = {}, _defineProperty(_classNames, _button2.default.disabled, this.props.disabled), _defineProperty(_classNames, _button2.default.pressed, this.state.pressed), _classNames));
 	
 	      var hoverStyles = {};
 	      if (this.state.hoverSize) {
@@ -453,7 +453,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  iconPrefix: 'icon-',
 	  disabled: false,
 	  pressedTimeout: 300,
-	  tag: 'div',
+	  tag: 'button',
 	  type: 'flat'
 	};
 
