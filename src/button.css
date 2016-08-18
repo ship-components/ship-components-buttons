@@ -8,7 +8,7 @@
   border: none;
   outline: none;
   padding: 0;
-  margin: 4px;
+  margin: 0;
   font: inherit;
   color: inherit;
   font-weight: inherit;
@@ -32,7 +32,7 @@
 }
 
 .wrapper {
-
+  margin: 0 4px;
 }
 
 .disabled {
@@ -115,12 +115,13 @@
   display: inline-block;
 }
 span + .icon {
-  margin-left: 6px;
+  margin-left: 8px;
 }
 
 .action .icon,
 .iconButton .icon {
-  font-size: 30px;
+  font-size: 24px;
+  opacity: 0.86;
   vertical-align: baseline;
   margin-left: 0;
 }
@@ -186,16 +187,19 @@ span + .icon {
   }
 }
 
-.group .btn:first-child  {
+.group .wrapper:first-child  {
   margin-left: 0;
 }
 
-.group .btn:last-child  {
+.group .wrapper:last-child  {
   margin-right: 0;
 }
 
 .fill {
   display: flex;
+  .wrapper {
+    flex-grow: 1;
+  }
 }
 
 .right {
