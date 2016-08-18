@@ -1,9 +1,10 @@
-# react-buttons
+# ship-components-buttons
 [React](http://facebook.github.io/react/) buttons. Exports a commonjs module that can be used with [webpack](http://webpack.github.io/). Source is in ES6 and is compiled down to ES5 using [Babel](https://babeljs.io/).
 
-[![Build Status](http://img.shields.io/travis/ship-components/react-buttons/master.svg?style=flat)](https://travis-ci.org/ship-components/react-buttons)
-[![Coverage](http://img.shields.io/coveralls/ship-components/react-buttons.svg?style=flat)](https://coveralls.io/github/ship-components)
-[![devDependencies](https://img.shields.io/david/dev/ship-components/react-buttons.svg?style=flat)](https://david-dm.org/ship-components/react-buttons#info=devDependencies)
+[![npm](https://img.shields.io/npm/v/ship-components-buttons.svg?maxAge=2592000)](https://www.npmjs.com/package/ship-components-buttons)
+[![Build Status](http://img.shields.io/travis/ship-components/ship-components-buttons/master.svg?style=flat)](https://travis-ci.org/ship-components/ship-components-buttons)
+[![Coverage](http://img.shields.io/coveralls/ship-components/ship-components-buttons.svg?style=flat)](https://coveralls.io/github/ship-components)
+[![devDependencies](https://img.shields.io/david/dev/ship-components/ship-components-buttons.svg?style=flat)](https://david-dm.org/ship-components/ship-components-buttons?type=dev)
 
 ## Usage
 
@@ -11,7 +12,7 @@
 The component is written using ES6/JSX therefore Babel is recommended to use it. The below example is based on using [webpack](http://webpack.github.io/) and [babel-loader](https://github.com/babel/babel-loader).
 ```js
 import React from 'react';
-import { Button } from 'react-buttons/src';
+import { Button } from 'ship-components-buttons/src';
 
 export default class Dialog extends React.Component {
   constructor(props) {
