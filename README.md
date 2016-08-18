@@ -12,7 +12,7 @@
 The component is written using ES6/JSX therefore Babel is recommended to use it. The below example is based on using [webpack](http://webpack.github.io/) and [babel-loader](https://github.com/babel/babel-loader).
 ```js
 import React from 'react';
-import { Button } from 'ship-components-buttons/src';
+import { Button } from 'ship-components-buttons';
 
 export default class Dialog extends React.Component {
   constructor(props) {

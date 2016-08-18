@@ -8,7 +8,7 @@
 // External Modules
 import React from 'react';
 import classNames from 'classnames';
-import HighlightClick from 'react-highlight-click';
+import HighlightClick from 'ship-components-highlight-click';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Tooltip from './Tooltip';

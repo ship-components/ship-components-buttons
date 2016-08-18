@@ -1,7 +1,7 @@
 jest.dontMock('../Button');
 
 // Don't need to test these and they currently throw errors
-jest.setMock('react-highlight-click', 'div');
+jest.setMock('ship-components-highlight-click', 'div');
 jest.setMock('react-addons-css-transition-group', 'div');
 
 import React from 'react';

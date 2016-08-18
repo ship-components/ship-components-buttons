@@ -1,10 +1,10 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("React"), require("classnames"), require("react-addons-css-transition-group"), require("react-highlight-click"));
+		module.exports = factory(require("React"), require("classnames"), require("react-addons-css-transition-group"), require("ship-components-highlight-click"));
 	else if(typeof define === 'function' && define.amd)
-		define(["React", "classnames", "react-addons-css-transition-group", "react-highlight-click"], factory);
+		define(["React", "classnames", "react-addons-css-transition-group", "ship-components-highlight-click"], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("React"), require("classnames"), require("react-addons-css-transition-group"), require("react-highlight-click")) : factory(root["React"], root["classnames"], root["react-addons-css-transition-group"], root["react-highlight-click"]);
+		var a = typeof exports === 'object' ? factory(require("React"), require("classnames"), require("react-addons-css-transition-group"), require("ship-components-highlight-click")) : factory(root["React"], root["classnames"], root["react-addons-css-transition-group"], root["ship-components-highlight-click"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
 })(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_12__) {
@@ -136,9 +136,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _reactHighlightClick = __webpack_require__(12);
+	var _shipComponentsHighlightClick = __webpack_require__(12);
 	
-	var _reactHighlightClick2 = _interopRequireDefault(_reactHighlightClick);
+	var _shipComponentsHighlightClick2 = _interopRequireDefault(_shipComponentsHighlightClick);
 	
 	var _reactAddonsCssTransitionGroup = __webpack_require__(5);
 	
@@ -397,7 +397,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          this.tagName,
 	          props,
 	          _react2.default.createElement(
-	            _reactHighlightClick2.default,
+	            _shipComponentsHighlightClick2.default,
 	            {
 	              className: _button2.default.container,
 	              disabled: this.props.disabled },

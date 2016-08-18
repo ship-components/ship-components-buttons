@@ -16,10 +16,10 @@ module.exports = {
   },
 
   externals: {
-    'classnames': true,
-    'react': 'React',
+    classnames: true,
+    react: 'React',
     'react-dom': true,
-    'react-highlight-click': true,
+    'ship-components-highlight-click': true,
     'react-addons-css-transition-group': true
   },
 
@@ -41,7 +41,7 @@ module.exports = {
       {
         test: /\.(jsx?|es6)$/,
         include: [
-          /react\-highlight\-click\/src/
+          /ship-components\-.*\/src/
         ],
         loader: 'babel'
       },

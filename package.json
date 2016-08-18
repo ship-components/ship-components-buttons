@@ -56,7 +56,7 @@
     "react-addons-css-transition-group": "^0.14.2",
     "react-addons-test-utils": "^0.14.2",
     "react-dom": "^0.14.2",
-    "react-highlight-click": "git+https://github.com/ship-components/ship-components-highlight-click.git#master",
+    "ship-components-highlight-click": "^0.1.4",
     "strict-loader": "^0.1.2",
     "style-loader": "^0.13.0",
     "webpack": "^1.13.0",
