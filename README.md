@@ -102,6 +102,10 @@ Below are is a sample of how to setup the loaders:
 1. `npm install`
 2. `npm test`
 
+## History
+0.1.1 - Fixed css issues and broken tests
+0.1.0 - Initial
+
 ## License
 The MIT License (MIT)
 
