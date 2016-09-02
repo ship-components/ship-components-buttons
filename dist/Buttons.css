@@ -90,6 +90,7 @@
 
 .button--wrapper {
   margin: 0 4px;
+  display: inline-block;
 }
 
 .button--disabled {
