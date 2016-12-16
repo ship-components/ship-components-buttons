@@ -104,6 +104,7 @@ Below are is a sample of how to setup the loaders:
 2. `npm test`
 
 ## History
+* 0.1.3 - Updated devDependencies and broke tests...
 * 0.1.2 - Fixed css with wrapper
 * 0.1.1 - Fixed css issues and broken tests
 * 0.1.0 - Initial
