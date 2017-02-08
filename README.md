@@ -104,6 +104,7 @@ Below are is a sample of how to setup the loaders:
 2. `npm test`
 
 ## History
+* 0.1.5 - Fixes Jest to pass all tests
 * 0.1.4 - Moved ship-components-* to dependencies
 * 0.1.3 - Updated devDependencies and broke tests...
 * 0.1.2 - Fixed css with wrapper

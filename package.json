@@ -1,6 +1,6 @@
 {
   "name": "ship-components-buttons",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Material Design React Buttons",
   "main": "src/index.js",
   "scripts": {
@@ -17,6 +17,16 @@
     "react"
   ],
   "author": "Isaac Suttell <isaac@isaacsuttell.com>",
+  "contributors": [
+    {
+      "name": "Isaac Suttell",
+      "email": "isaac.suttell@sony.com"
+    },
+    {
+      "name": "Sepand Assadi",
+      "email": "sepand.assadi@sony.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ship-components/ship-components-buttons/issues"
@@ -47,6 +57,7 @@
     "grunt-eslint": "^17.3.1",
     "grunt-webpack": "^1.0.11",
     "jest-cli": "^18.0.0",
+    "jest-css-modules": "^1.1.0",
     "postcss-calc": "^5.0.0",
     "postcss-color-function": "^2.0.0",
     "postcss-color-hex-alpha": "^2.0.0",
@@ -63,6 +74,12 @@
     "webpack-dev-server": "^1.14.1"
   },
   "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(css)$": "<rootDir>/node_modules/jest-css-modules"
+    },
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/classnames",
       "<rootDir>/node_modules/react",
