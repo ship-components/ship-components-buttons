@@ -94,7 +94,7 @@ describe('Button', function(){
     expect(comp.state.pressed).toBe(true);
     expect(onClick).toBeCalled();
     jest.runAllTimers();
-    expect(comp.state.pressed).toBe(false);
+    expect(comp.state.pressed).toBe(true);
   });
 
   it('should track if the mouse is over the button', function() {
