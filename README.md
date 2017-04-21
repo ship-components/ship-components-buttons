@@ -3,7 +3,6 @@
 
 [![npm](https://img.shields.io/npm/v/ship-components-buttons.svg?maxAge=2592000)](https://www.npmjs.com/package/ship-components-buttons)
 [![Build Status](http://img.shields.io/travis/ship-components/ship-components-buttons/master.svg?style=flat)](https://travis-ci.org/ship-components/ship-components-buttons)
-Sh
 [![devDependencies](https://img.shields.io/david/dev/ship-components/ship-components-buttons.svg?style=flat)](https://david-dm.org/ship-components/ship-components-buttons?type=dev)
 
 ## Usage
@@ -104,6 +103,7 @@ Below are is a sample of how to setup the loaders:
 2. `npm test`
 
 ## History
+* 0.2.0 - Updates to the latest babel configurations (babel-preset-env)
 * 0.1.5 - Fixes Jest to pass all tests
 * 0.1.4 - Moved ship-components-* to dependencies
 * 0.1.3 - Updated devDependencies and broke tests...
