@@ -16,7 +16,6 @@
   line-height: 1;
   white-space: nowrap;
   -webkit-transform: translateY(0%) translateX(-50%);
-      -ms-transform: translateY(0%) translateX(-50%);
           transform: translateY(0%) translateX(-50%);
   color: #fff;
 }
@@ -26,33 +25,27 @@
  */
 .tooltip--enter {
   opacity: 0;
-  -webkit-transition: 250ms all ease-in;
   transition: 250ms all ease-in;
   -webkit-transform: translateY(-30%) translateX(-50%);
-      -ms-transform: translateY(-30%) translateX(-50%);
           transform: translateY(-30%) translateX(-50%);
 }
 
 .tooltip--enterActive {
   opacity: 1;
   -webkit-transform: translateY(0%) translateX(-50%);
-      -ms-transform: translateY(0%) translateX(-50%);
           transform: translateY(0%) translateX(-50%);
 }
 
 .tooltip--leave {
   opacity: 1;
-  -webkit-transition: 250ms all ease-out;
   transition: 250ms all ease-out;
   -webkit-transform: translateY(0%) translateX(-50%);
-      -ms-transform: translateY(0%) translateX(-50%);
           transform: translateY(0%) translateX(-50%);
 }
 
 .tooltip--leaveActive {
   opacity: 0;
   -webkit-transform: translateY(-30%) translateX(-50%);
-      -ms-transform: translateY(-30%) translateX(-50%);
           transform: translateY(-30%) translateX(-50%);
 }
 /**
@@ -70,7 +63,6 @@
   color: inherit;
   font-weight: inherit;
   overflow: hidden;
-  -webkit-transition: 100ms ease-in all;
   transition: 100ms ease-in all;
   cursor: pointer;
   vertical-align: top;
@@ -121,7 +113,6 @@
   padding: 8px;
   border-radius: 2px;
   overflow: hidden;
-  -webkit-transition: 100ms ease-in all;
   transition: 100ms ease-in all;
   position: initial;
   /**
@@ -145,33 +136,27 @@
  */
 .button--enter {
   opacity: 0;
-  -webkit-transition: 300ms all ease-in;
   transition: 300ms all ease-in;
   -webkit-transform: scale(0);
-      -ms-transform: scale(0);
           transform: scale(0);
 }
 
 .button--enterActive {
   opacity: 1;
   -webkit-transform: scale(1);
-      -ms-transform: scale(1);
           transform: scale(1);
 }
 
 .button--leave {
   opacity: 1;
-  -webkit-transition: 300ms all ease-out;
   transition: 300ms all ease-out;
   -webkit-transform: scale(1);
-      -ms-transform: scale(1);
           transform: scale(1);
 }
 
 .button--leaveActive {
   opacity: 0;
   -webkit-transform: scale(0);
-      -ms-transform: scale(0);
           transform: scale(0);
 }
 
@@ -238,7 +223,6 @@ span + .button--icon {
   .button--pressed.button--raised,
   .button--pressed.button--iconButton {
   -webkit-transform: translateY(2px);
-      -ms-transform: translateY(2px);
           transform: translateY(2px);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }
@@ -247,13 +231,11 @@ span + .button--icon {
 }
 .button--pressed.button--flat .button--container {
   -webkit-transform: translateY(1px);
-      -ms-transform: translateY(1px);
           transform: translateY(1px);
 }
 
 .button--group {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
@@ -261,7 +243,6 @@ span + .button--icon {
 .button--group .button--btn {
   width: 100%;
   -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
           flex-grow: 1
 }
@@ -276,14 +257,12 @@ span + .button--icon {
 
 .button--fill {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
 .button--fill .button--wrapper {
   -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
@@ -291,7 +270,6 @@ span + .button--icon {
 .button--right {
   text-align: right;
   -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
@@ -299,7 +277,6 @@ span + .button--icon {
 .button--left {
   text-align: left;
   -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
       -ms-flex-pack: start;
           justify-content: flex-start;
 }
