@@ -7,6 +7,7 @@
 
 // External Modules
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import HighlightClick from 'ship-components-highlight-click';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
@@ -153,12 +154,12 @@ export default class Button extends Component {
    * @return {React}
    */
   renderIcon() {
-    if(typeof this.props.iconClass === 'string') {
+    if (typeof this.props.iconClass === 'string') {
       return <span className={css.icon + ' ' + this.props.iconClass} />;
-    } else if (typeof this.props.icon === 'string' ) {
-      return <span className={css.icon + ' ' + this.props.iconPrefix + this.props.icon} />
+    } else if (typeof this.props.icon === 'string') {
+      return <span className={css.icon + ' ' + this.props.iconPrefix + this.props.icon} />;
     } else {
-     return null;
+      return null;
     }
   }
 
@@ -189,7 +190,7 @@ export default class Button extends Component {
     }
 
     // Store it on `this` so JSX reads it properly
-    const Component = this.getTag();
+    const ButtonComponent = this.getTag();
 
     // Construct props
     let props = {
@@ -199,41 +200,45 @@ export default class Button extends Component {
       onMouseEnter: this.handleMouseEnter,
       onMouseLeave: this.handleMouseLeave,
       onClick: this.handleClick
-    }
+    };
 
     // Setup anchor attributes
-    if (Component === 'a' && !this.props.disabled) {
+    if (ButtonComponent === 'a' && !this.props.disabled) {
       props.href = this.props.href;
-      props.target = this.props.target || '_blank';
+      props.target = this.props.target;
       props.download = this.props.download;
       props.rel = this.props.rel;
     }
 
     return (
       <div className={classNames(css.wrapper, this.props.className)}>
-        <Component {...props}>
+        <ButtonComponent {...props}>
           <HighlightClick
             className={css.container}
-            disabled={this.props.disabled}>
-              {this.props.children}
-              {this.renderIcon()}
-              <ReactCSSTransitionGroup
-                className={css.hoverContainer}
-                transitionName={css}
-                transitionEnterTimeout={500}
-                transitionLeaveTimeout={500} >
-                {this.state.hover && !this.props.disableHover ?
-                  <div className={css.hoverEffect}
-                    style={hoverStyles}/>
+            disabled={this.props.disabled}
+          >
+            {this.props.children}
+            {this.renderIcon()}
+            <ReactCSSTransitionGroup
+              className={css.hoverContainer}
+              transitionName={css}
+              transitionEnterTimeout={500}
+              transitionLeaveTimeout={500}
+            >
+              {this.state.hover && !this.props.disableHover ?
+                <div className={css.hoverEffect}
+                  style={hoverStyles}
+                />
                 : null}
-              </ReactCSSTransitionGroup>
+            </ReactCSSTransitionGroup>
           </HighlightClick>
-        </Component>
+        </ButtonComponent>
         {this.props.tooltip ?
           <Tooltip
             text={this.props.tooltip}
-            visible={this.state.hover} />
-        : null}
+            visible={this.state.hover}
+          />
+          : null}
       </div>
     );
   }
@@ -244,21 +249,29 @@ export default class Button extends Component {
  * @type {Object}
  */
 Button.propTypes = {
-  download: React.PropTypes.oneOfType([
-    React.PropTypes.bool,
-    React.PropTypes.string
+  download: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string
   ]),
-  rel: React.PropTypes.string,
-  tooltip: React.PropTypes.string,
-  tag: React.PropTypes.string,
-  href: React.PropTypes.string,
-  type: React.PropTypes.oneOf(['flat', 'action', 'raised', 'iconButton']),
-  onClick: React.PropTypes.func,
-  iconClass: React.PropTypes.string,
-  icon: React.PropTypes.string,
-  iconPrefix: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
-  disableHover: React.PropTypes.bool
+  className: PropTypes.string,
+  pressedTimeout: PropTypes.number,
+  rel: PropTypes.string,
+  tooltip: PropTypes.string,
+  target: PropTypes.string,
+  tag: PropTypes.string,
+  href: PropTypes.string,
+  type: PropTypes.oneOf(['flat', 'action', 'raised', 'iconButton']),
+  onClick: PropTypes.func,
+  iconClass: PropTypes.string,
+  icon: PropTypes.string,
+  iconPrefix: PropTypes.string,
+  disabled: PropTypes.bool,
+  disableHover: PropTypes.bool,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+    PropTypes.string
+  ])
 };
 
 /**
@@ -266,6 +279,7 @@ Button.propTypes = {
  * @type {Object}
  */
 Button.defaultProps = {
+  className: undefined,
   download: false,
   rel: undefined,
   disableHover: false,
@@ -273,5 +287,12 @@ Button.defaultProps = {
   disabled: false,
   pressedTimeout: 300,
   tag: 'button',
-  type: 'flat'
+  type: 'flat',
+  children: null,
+  tooltip: undefined,
+  target: '_blank',
+  href: undefined,
+  onClick: undefined,
+  iconClass: undefined,
+  icon: undefined
 };

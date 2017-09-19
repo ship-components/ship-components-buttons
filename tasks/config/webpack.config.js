@@ -64,7 +64,7 @@ module.exports = {
 
   eslint: {
     // Strict linting enforcing
-    failOnWarning: false
+    failOnWarning: true
   },
 
   // CSS Modules

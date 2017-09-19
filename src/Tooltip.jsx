@@ -1,38 +1,34 @@
 /** ****************************************************************************
  * Tooltip
  *
- * @author       Isaac Suttell <isaac_suttell@playstation.sony.com>
+ * @author       Isaac Suttell <isaac.suttell@sony.com>
  * @file         Material Design Button
  ******************************************************************************/
 
 // External Modules
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 // Local
 import css from './tooltip.css';
 
-export default class Tooltip extends React.Component {
-  /**
-   * Render
-   * @return {React}
-   */
-  render() {
-    return (
-      <ReactCSSTransitionGroup
-        className={css.container}
-        component='div'
-        transitionName={css}
-        transitionEnterTimeout={250}
-        transitionLeaveTimeout={250}>
-        {this.props.visible ?
-          <div className={css.text}>
-              {this.props.text}
-          </div>
+export default function Tooltip(props) {
+  return (
+    <ReactCSSTransitionGroup
+      className={css.container}
+      component='div'
+      transitionName={css}
+      transitionEnterTimeout={250}
+      transitionLeaveTimeout={250}
+    >
+      {props.visible ?
+        <div className={css.text}>
+          {props.text}
+        </div>
         : null}
-      </ReactCSSTransitionGroup>
-    );
-  }
+    </ReactCSSTransitionGroup>
+  );
 }
 
 /**
@@ -40,8 +36,8 @@ export default class Tooltip extends React.Component {
  * @type {Object}
  */
 Tooltip.propTypes = {
-  text: React.PropTypes.string,
-  visible: React.PropTypes.bool
+  text: PropTypes.node,
+  visible: PropTypes.bool
 };
 
 /**
@@ -49,5 +45,6 @@ Tooltip.propTypes = {
  * @type {Object}
  */
 Tooltip.defaultProps = {
+  text: undefined,
   visible: false
 };

@@ -59,7 +59,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/** ****************************************************************************
 	 * Buttons
 	 *
-	 * @author       Isaac Suttell <isaac_suttell@playstation.sony.com>
+	 * @author       Isaac Suttell <isaac.suttell@sony.com>
 	 * @file         Helper file for importing Buttons
 	 * @example      import { FloatingActionButton } from 'react-buttons/src';
 	 ******************************************************************************/
@@ -489,7 +489,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/** ****************************************************************************
 	 * ButtonGroup
 	 *
-	 * @author       Isaac Suttell <isaac_suttell@playstation.sony.com>
+	 * @author       Isaac Suttell <isaac.suttell@sony.com>
 	 * @file         A collection of buttons
 	 ******************************************************************************/
 	
@@ -568,7 +568,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/** ****************************************************************************
 	 * FloatingActionButton
 	 *
-	 * @author       Isaac Suttell <isaac_suttell@playstation.sony.com>
+	 * @author       Isaac Suttell <isaac.suttell@sony.com>
 	 * @file         Shortcut for Button
 	 ******************************************************************************/
 	
@@ -627,7 +627,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/** ****************************************************************************
 	 * FloatingActionButton
 	 *
-	 * @author       Isaac Suttell <isaac_suttell@playstation.sony.com>
+	 * @author       Isaac Suttell <isaac.suttell@sony.com>
 	 * @file         Shortcut for Button
 	 ******************************************************************************/
 	
@@ -686,7 +686,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/** ****************************************************************************
 	 * RaiseButton
 	 *
-	 * @author       Isaac Suttell <isaac_suttell@playstation.sony.com>
+	 * @author       Isaac Suttell <isaac.suttell@sony.com>
 	 * @file         Shortcut for Button
 	 ******************************************************************************/
 	
@@ -745,7 +745,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/** ****************************************************************************
 	 * Tooltip
 	 *
-	 * @author       Isaac Suttell <isaac_suttell@playstation.sony.com>
+	 * @author       Isaac Suttell <isaac.suttell@sony.com>
 	 * @file         Material Design Button
 	 ******************************************************************************/
 	
