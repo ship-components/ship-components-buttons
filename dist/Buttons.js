@@ -54,7 +54,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict'
+	'use strict';
 	
 	/** ****************************************************************************
 	 * Buttons
@@ -64,7 +64,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @example      import { FloatingActionButton } from 'react-buttons/src';
 	 ******************************************************************************/
 	
-	;
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
@@ -92,8 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var Button = exports.Button = _Button2.default;
-	var FloatingActionButton = exports.FloatingActionButton = _FloatingActionButton2.default;
+	var Button = exports.Button = _Button2.default;var FloatingActionButton = exports.FloatingActionButton = _FloatingActionButton2.default;
 	var RaisedButton = exports.RaisedButton = _RaisedButton2.default;
 	var ButtonGroup = exports.ButtonGroup = _ButtonGroup2.default;
 	var IconButton = exports.IconButton = _IconButton2.default;
@@ -110,23 +108,22 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict'
+	'use strict';
 	
 	/** ****************************************************************************
 	 * Button
 	 *
-	 * @author       Isaac Suttell <isaac_suttell@playstation.sony.com>
+	 * @author       Isaac Suttell <isaac.suttell@sony.com>
 	 * @file         Material Design Button
 	 ******************************************************************************/
 	
 	// External Modules
-	;
-	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(1);
 	
@@ -154,43 +151,44 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-	
 	// Local
 	
-	var Button = (function (_React$Component) {
-	  _inherits(Button, _React$Component);
+	
+	var Button = function (_Component) {
+	  _inherits(Button, _Component);
 	
 	  /**
 	   * Base Button
 	   * @param  {Object} props
 	   */
-	
 	  function Button(props) {
 	    _classCallCheck(this, Button);
 	
-	    var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Button).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).call(this, props));
 	
-	    _this2.state = {
+	    _this.state = {
 	      hoverSize: void 0,
 	      hover: false,
 	      pressed: false
 	    };
-	    _this2.handleMouseEnter = _this2.handleMouseEnter.bind(_this2);
-	    _this2.handleMouseLeave = _this2.handleMouseLeave.bind(_this2);
-	    _this2.handleClick = _this2.handleClick.bind(_this2);
-	    return _this2;
+	    _this.handleMouseEnter = _this.handleMouseEnter.bind(_this);
+	    _this.handleMouseLeave = _this.handleMouseLeave.bind(_this);
+	    _this.handleClick = _this.handleClick.bind(_this);
+	    return _this;
 	  }
 	
 	  /**
 	   * First mount, get a starting width
 	   */
+	
 	
 	  _createClass(Button, [{
 	    key: 'componentDidMount',
@@ -292,7 +290,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'handleClick',
 	    value: function handleClick(event) {
-	      var _this = this;
+	      var _this2 = this;
 	
 	      if (this.props.disabled) {
 	        event.stopPropagation();
@@ -307,12 +305,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.setState({
 	        pressed: true
 	      }, function () {
-	        clearTimeout(_this.pressedTimeout);
-	        _this.pressedTimeout = setTimeout(function () {
-	          _this.setState({
+	        clearTimeout(_this2.pressedTimeout);
+	        _this2.pressedTimeout = setTimeout(function () {
+	          _this2.setState({
 	            pressed: false
 	          });
-	        }, _this.props.pressedTimeout);
+	        }, _this2.props.pressedTimeout);
 	      });
 	    }
 	
@@ -382,14 +380,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        onMouseEnter: this.handleMouseEnter,
 	        onMouseLeave: this.handleMouseLeave,
 	        onClick: this.handleClick
-	      };
 	
-	      // Setup anchor attributes
-	      if (Component === 'a' && !this.props.disabled) {
+	        // Setup anchor attributes
+	      };if (Component === 'a' && !this.props.disabled) {
 	        props.href = this.props.href;
 	        props.target = this.props.target || '_blank';
 	        props.download = this.props.download;
-	        props.ping = this.props.ping;
 	        props.rel = this.props.rel;
 	      }
 	
@@ -426,17 +422,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }]);
 	
 	  return Button;
-	})(_react2.default.Component);
+	}(_react.Component);
 	
 	/**
 	 * Type Checks
 	 * @type {Object}
 	 */
 	
+	
 	exports.default = Button;
 	Button.propTypes = {
 	  download: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.bool, _react2.default.PropTypes.string]),
-	  ping: _react2.default.PropTypes.string,
 	  rel: _react2.default.PropTypes.string,
 	  tooltip: _react2.default.PropTypes.string,
 	  tag: _react2.default.PropTypes.string,
@@ -456,6 +452,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	Button.defaultProps = {
 	  download: false,
+	  rel: undefined,
 	  disableHover: false,
 	  iconPrefix: 'icon-',
 	  disabled: false,
@@ -487,7 +484,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict'
+	'use strict';
 	
 	/** ****************************************************************************
 	 * ButtonGroup
@@ -496,13 +493,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @file         A collection of buttons
 	 ******************************************************************************/
 	
-	;
-	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(1);
 	
@@ -518,21 +513,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-	
-	var ButtonGroup = (function (_React$Component) {
+	var ButtonGroup = function (_React$Component) {
 	  _inherits(ButtonGroup, _React$Component);
 	
 	  function ButtonGroup() {
 	    _classCallCheck(this, ButtonGroup);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ButtonGroup).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (ButtonGroup.__proto__ || Object.getPrototypeOf(ButtonGroup)).apply(this, arguments));
 	  }
 	
 	  _createClass(ButtonGroup, [{
@@ -550,12 +545,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }]);
 	
 	  return ButtonGroup;
-	})(_react2.default.Component);
+	}(_react2.default.Component);
 	
 	/**
 	 * Type Checking
 	 * @type {Object}
 	 */
+	
 	
 	exports.default = ButtonGroup;
 	ButtonGroup.propTypes = {
@@ -567,7 +563,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict'
+	'use strict';
 	
 	/** ****************************************************************************
 	 * FloatingActionButton
@@ -576,15 +572,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @file         Shortcut for Button
 	 ******************************************************************************/
 	
-	;
-	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(1);
 	
@@ -602,13 +596,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var FloatingActionButton = (function (_React$Component) {
+	var FloatingActionButton = function (_React$Component) {
 	  _inherits(FloatingActionButton, _React$Component);
 	
 	  function FloatingActionButton() {
 	    _classCallCheck(this, FloatingActionButton);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(FloatingActionButton).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (FloatingActionButton.__proto__ || Object.getPrototypeOf(FloatingActionButton)).apply(this, arguments));
 	  }
 	
 	  _createClass(FloatingActionButton, [{
@@ -620,7 +614,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }]);
 	
 	  return FloatingActionButton;
-	})(_react2.default.Component);
+	}(_react2.default.Component);
 	
 	exports.default = FloatingActionButton;
 
@@ -628,7 +622,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict'
+	'use strict';
 	
 	/** ****************************************************************************
 	 * FloatingActionButton
@@ -637,15 +631,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @file         Shortcut for Button
 	 ******************************************************************************/
 	
-	;
-	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(1);
 	
@@ -663,13 +655,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var FloatingActionButton = (function (_React$Component) {
+	var FloatingActionButton = function (_React$Component) {
 	  _inherits(FloatingActionButton, _React$Component);
 	
 	  function FloatingActionButton() {
 	    _classCallCheck(this, FloatingActionButton);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(FloatingActionButton).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (FloatingActionButton.__proto__ || Object.getPrototypeOf(FloatingActionButton)).apply(this, arguments));
 	  }
 	
 	  _createClass(FloatingActionButton, [{
@@ -681,7 +673,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }]);
 	
 	  return FloatingActionButton;
-	})(_react2.default.Component);
+	}(_react2.default.Component);
 	
 	exports.default = FloatingActionButton;
 
@@ -689,7 +681,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict'
+	'use strict';
 	
 	/** ****************************************************************************
 	 * RaiseButton
@@ -698,15 +690,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @file         Shortcut for Button
 	 ******************************************************************************/
 	
-	;
-	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(1);
 	
@@ -724,13 +714,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var RaisedButton = (function (_React$Component) {
+	var RaisedButton = function (_React$Component) {
 	  _inherits(RaisedButton, _React$Component);
 	
 	  function RaisedButton() {
 	    _classCallCheck(this, RaisedButton);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(RaisedButton).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (RaisedButton.__proto__ || Object.getPrototypeOf(RaisedButton)).apply(this, arguments));
 	  }
 	
 	  _createClass(RaisedButton, [{
@@ -742,7 +732,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }]);
 	
 	  return RaisedButton;
-	})(_react2.default.Component);
+	}(_react2.default.Component);
 	
 	exports.default = RaisedButton;
 
@@ -750,7 +740,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict'
+	'use strict';
 	
 	/** ****************************************************************************
 	 * Tooltip
@@ -760,13 +750,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 ******************************************************************************/
 	
 	// External Modules
-	;
-	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(1);
 	
@@ -790,13 +779,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	// Local
 	
-	var Tooltip = (function (_React$Component) {
+	
+	var Tooltip = function (_React$Component) {
 	  _inherits(Tooltip, _React$Component);
 	
 	  function Tooltip() {
 	    _classCallCheck(this, Tooltip);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Tooltip).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Tooltip.__proto__ || Object.getPrototypeOf(Tooltip)).apply(this, arguments));
 	  }
 	
 	  _createClass(Tooltip, [{
@@ -825,12 +815,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }]);
 	
 	  return Tooltip;
-	})(_react2.default.Component);
+	}(_react2.default.Component);
 	
 	/**
 	 * Type Checks
 	 * @type {Object}
 	 */
+	
 	
 	exports.default = Tooltip;
 	Tooltip.propTypes = {

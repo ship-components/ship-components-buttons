@@ -1,14 +1,13 @@
-jest.dontMock('../Button');
-
-// Don't need to test these and they currently throw errors
-jest.setMock('ship-components-highlight-click', 'div');
-jest.setMock('react-addons-css-transition-group', 'div');
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-let Button = require('../Button').default;
+// Don't need to test these and they currently throw errors
+jest.mock('ship-components-highlight-click', () => 'div');
+jest.mock('react-addons-css-transition-group', () => 'div');
+
+import Button from '../Button';
+
 const noOp = function() {};
 Button.prototype.componentDidUpdate = noOp;
 
@@ -78,6 +77,7 @@ describe('Button', function(){
   });
 
   it('should set the pressed state when clicked', function() {
+    jest.useFakeTimers();
     let onClick = jest.genMockFunction();
 
     let reactTree = TestUtils.renderIntoDocument(

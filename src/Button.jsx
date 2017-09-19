@@ -1,12 +1,12 @@
 /** ****************************************************************************
  * Button
  *
- * @author       Isaac Suttell <isaac_suttell@playstation.sony.com>
+ * @author       Isaac Suttell <isaac.suttell@sony.com>
  * @file         Material Design Button
  ******************************************************************************/
 
 // External Modules
-import React from 'react';
+import React, {Component} from 'react';
 import classNames from 'classnames';
 import HighlightClick from 'ship-components-highlight-click';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
@@ -16,7 +16,7 @@ import Tooltip from './Tooltip';
 // Local
 import css from './button.css';
 
-export default class Button extends React.Component {
+export default class Button extends Component {
   /**
    * Base Button
    * @param  {Object} props
@@ -206,7 +206,6 @@ export default class Button extends React.Component {
       props.href = this.props.href;
       props.target = this.props.target || '_blank';
       props.download = this.props.download;
-      props.ping = this.props.ping;
       props.rel = this.props.rel;
     }
 
@@ -249,7 +248,6 @@ Button.propTypes = {
     React.PropTypes.bool,
     React.PropTypes.string
   ]),
-  ping: React.PropTypes.string,
   rel: React.PropTypes.string,
   tooltip: React.PropTypes.string,
   tag: React.PropTypes.string,
@@ -269,6 +267,7 @@ Button.propTypes = {
  */
 Button.defaultProps = {
   download: false,
+  rel: undefined,
   disableHover: false,
   iconPrefix: 'icon-',
   disabled: false,
