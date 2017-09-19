@@ -189,7 +189,7 @@ export default class Button extends React.Component {
     }
 
     // Store it on `this` so JSX reads it properly
-    this.tagName = this.getTag();
+    const Component = this.getTag();
 
     // Construct props
     let props = {
@@ -202,14 +202,17 @@ export default class Button extends React.Component {
     }
 
     // Setup anchor attributes
-    if (this.tagName === 'a' && !this.props.disabled) {
+    if (Component === 'a' && !this.props.disabled) {
       props.href = this.props.href;
       props.target = this.props.target || '_blank';
+      props.download = this.props.download;
+      props.ping = this.props.ping;
+      props.rel = this.props.rel;
     }
 
     return (
       <div className={classNames(css.wrapper, this.props.className)}>
-        <this.tagName {...props}>
+        <Component {...props}>
           <HighlightClick
             className={css.container}
             disabled={this.props.disabled}>
@@ -226,7 +229,7 @@ export default class Button extends React.Component {
                 : null}
               </ReactCSSTransitionGroup>
           </HighlightClick>
-        </this.tagName>
+        </Component>
         {this.props.tooltip ?
           <Tooltip
             text={this.props.tooltip}
@@ -242,6 +245,12 @@ export default class Button extends React.Component {
  * @type {Object}
  */
 Button.propTypes = {
+  download: React.PropTypes.oneOfType([
+    React.PropTypes.bool,
+    React.PropTypes.string
+  ]),
+  ping: React.PropTypes.string,
+  rel: React.PropTypes.string,
   tooltip: React.PropTypes.string,
   tag: React.PropTypes.string,
   href: React.PropTypes.string,
@@ -259,6 +268,7 @@ Button.propTypes = {
  * @type {Object}
  */
 Button.defaultProps = {
+  download: false,
   disableHover: false,
   iconPrefix: 'icon-',
   disabled: false,

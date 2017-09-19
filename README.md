@@ -104,6 +104,7 @@ Below are is a sample of how to setup the loaders:
 2. `npm test`
 
 ## History
+* 0.2.0 - Added support for the follow a attributes: download, ping, rel
 * 0.1.4 - Moved ship-components-* to dependencies
 * 0.1.3 - Updated devDependencies and broke tests...
 * 0.1.2 - Fixed css with wrapper
@@ -113,7 +114,7 @@ Below are is a sample of how to setup the loaders:
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2015 Isaac Suttell
+Copyright (c) 2017 SHIP
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

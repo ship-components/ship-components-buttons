@@ -372,7 +372,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	
 	      // Store it on `this` so JSX reads it properly
-	      this.tagName = this.getTag();
+	      var Component = this.getTag();
 	
 	      // Construct props
 	      var props = {
@@ -385,16 +385,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	      };
 	
 	      // Setup anchor attributes
-	      if (this.tagName === 'a' && !this.props.disabled) {
+	      if (Component === 'a' && !this.props.disabled) {
 	        props.href = this.props.href;
 	        props.target = this.props.target || '_blank';
+	        props.download = this.props.download;
+	        props.ping = this.props.ping;
+	        props.rel = this.props.rel;
 	      }
 	
 	      return _react2.default.createElement(
 	        'div',
 	        { className: (0, _classnames2.default)(_button2.default.wrapper, this.props.className) },
 	        _react2.default.createElement(
-	          this.tagName,
+	          Component,
 	          props,
 	          _react2.default.createElement(
 	            _shipComponentsHighlightClick2.default,
@@ -432,6 +435,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	exports.default = Button;
 	Button.propTypes = {
+	  download: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.bool, _react2.default.PropTypes.string]),
+	  ping: _react2.default.PropTypes.string,
+	  rel: _react2.default.PropTypes.string,
 	  tooltip: _react2.default.PropTypes.string,
 	  tag: _react2.default.PropTypes.string,
 	  href: _react2.default.PropTypes.string,
@@ -449,6 +455,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @type {Object}
 	 */
 	Button.defaultProps = {
+	  download: false,
 	  disableHover: false,
 	  iconPrefix: 'icon-',
 	  disabled: false,

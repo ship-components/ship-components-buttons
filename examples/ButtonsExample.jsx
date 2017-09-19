@@ -138,6 +138,27 @@ class ButtonsExamples extends React.Component {
              '</ButtonGroup>'}
           </code>
         </div>
+        <div className='example-group'>
+          <h2>Link Buttons</h2>
+          <ButtonGroup>
+            <Button
+              href='http://google.com'
+            >
+              Google.com
+            </Button>
+            <Button
+              href='http://google.com'
+              download
+            >
+              Download Google.com
+            </Button>
+          </ButtonGroup>
+          <code>
+            {'<RaisedButton onClick={this.handleClick}>\n' +
+             '      Example #1\n' +
+             '</RaisedButton>'}
+          </code>
+        </div>
       </div>
     );
   }
