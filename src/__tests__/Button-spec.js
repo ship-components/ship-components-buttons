@@ -13,7 +13,7 @@ Button.prototype.componentDidUpdate = noOp;
 
 const shipBtnClass = 'ship-components-btn';
 
-describe('Button', () => {
+describe('<Button />', () => {
   it('should support button and a tagNames', () => {
     let className = 'testClass';
     ['button', 'a'].forEach((tagName) => {
@@ -29,23 +29,6 @@ describe('Button', () => {
 
       expect(ReactDOM.findDOMNode(el).childNodes[0].tagName.toLowerCase()).toEqual(tagName.toLowerCase());
     });
-  });
-
-  it('should support anchor tags with the href prop', () => {
-    let className = 'testClass';
-
-    let reactTree = TestUtils.renderIntoDocument(
-      <Button
-        className={className}
-        tagName='a'
-        href='http://google.com/'
-        onClick={noOp}
-      />
-    );
-
-    let el = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
-
-    expect(ReactDOM.findDOMNode(el).childNodes[0].tagName.toLowerCase()).toEqual('a');
   });
 
   it('should support custom css classes', () => {
@@ -200,4 +183,47 @@ describe('Button', () => {
     let node = TestUtils.findRenderedDOMComponentWithClass(reactTree, 'icon-add');
     expect(node).toBeDefined();
   });
+
+
+  describe('<a /> support', () => {
+    it('should support anchor tags with the href prop', () => {
+      let className = 'testClass';
+
+      let reactTree = TestUtils.renderIntoDocument(
+        <Button
+          className={className}
+          tagName='a'
+          href='http://google.com/'
+          onClick={noOp}
+        />
+      );
+
+      let el = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
+
+      expect(ReactDOM.findDOMNode(el).childNodes[0].tagName.toLowerCase()).toEqual('a');
+    });
+
+    it('should render the download prop', () => {
+      let className = 'testClass';
+
+      const filename = 'example.mp4';
+
+      let reactTree = TestUtils.renderIntoDocument(
+        <Button
+          className={className}
+          tagName='a'
+          href='http://google.com/'
+          download={filename}
+          onClick={noOp}
+        />
+      );
+
+      // Get the element so we can verify the download prop is being rendered
+      const el = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
+      const a = ReactDOM.findDOMNode(el).childNodes[0];
+
+      expect(a.download).toEqual(filename);
+    });
+  });
+
 });
