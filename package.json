@@ -25,6 +25,16 @@
     "css modules"
   ],
   "author": "Isaac Suttell <isaac@isaacsuttell.com>",
+  "contributors": [
+    {
+      "name": "Isaac Suttell",
+      "email": "isaac.suttell@sony.com"
+    },
+    {
+      "name": "Sepand Assadi",
+      "email": "sepand.assadi@sony.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ship-components/ship-components-buttons/issues"

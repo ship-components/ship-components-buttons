@@ -105,7 +105,8 @@ Below are is a sample of how to setup the loaders:
 
 ## History
 
-- 0.2.0 - Added support for the follow a attributes: download, rel. Fixed unit tests and upgrade deps
+- 0.2.0 - Added support for the follow a attributes: download, rel. Upgrade deps
+- 0.1.5 - Fixes Jest to pass all tests
 - 0.1.4 - Moved ship-components-* to dependencies
 - 0.1.3 - Updated devDependencies and broke tests...
 - 0.1.2 - Fixed css with wrapper
