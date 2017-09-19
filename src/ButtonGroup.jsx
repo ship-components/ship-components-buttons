@@ -1,38 +1,52 @@
 /** ****************************************************************************
  * ButtonGroup
  *
- * @author       Isaac Suttell <isaac_suttell@playstation.sony.com>
+ * @author       Isaac Suttell <isaac.suttell@sony.com>
  * @file         A collection of buttons
  ******************************************************************************/
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import css from './button.css';
 
-export default class ButtonGroup extends React.Component {
-  render() {
-    const classes = classNames(
-      this.props.className,
-      css.group,
-      {
-        [css.fill] : this.props.fill === true,
-        [css.right] : this.props.align === 'right',
-        [css.left] : this.props.align === 'left'
-      }
-    );
-    return (
-      <div className={classes}>
-        {this.props.children}
-      </div>
-    );
-  }
+export default function ButtonGroup(props) {
+  const classes = classNames(
+    props.className,
+    css.group,
+    {
+      [css.fill] : props.fill === true,
+      [css.right] : props.align === 'right',
+      [css.left] : props.align === 'left'
+    }
+  );
+  return (
+    <div className={classes}>
+      {props.children}
+    </div>
+  );
 }
+
+/**
+ * Defaults
+ * @type    {Object}
+ */
+ButtonGroup.defaultProps = {
+  fill: false,
+  align: undefined,
+  className: undefined
+};
 
 /**
  * Type Checking
  * @type {Object}
  */
 ButtonGroup.propTypes = {
-  fill: React.PropTypes.bool,
-  align: React.PropTypes.string
+  fill: PropTypes.bool,
+  align: PropTypes.string,
+  className: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 };

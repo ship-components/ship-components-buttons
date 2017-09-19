@@ -1,28 +1,28 @@
-jest.dontMock('../Button');
-
-// Don't need to test these and they currently throw errors
-jest.setMock('ship-components-highlight-click', 'div');
-jest.setMock('react-addons-css-transition-group', 'div');
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-let Button = require('../Button').default;
-const noOp = function() {};
+// Don't need to test these and they currently throw errors
+jest.mock('ship-components-highlight-click', () => 'div');
+jest.mock('react-addons-css-transition-group', () => 'div');
+
+import Button from '../Button';
+
+const noOp = () => {};
 Button.prototype.componentDidUpdate = noOp;
 
 const shipBtnClass = 'ship-components-btn';
 
-describe('Button', function(){
-  it('should support button and a tagNames', function() {
+describe('<Button />', () => {
+  it('should support button and a tagNames', () => {
     let className = 'testClass';
-    ['button', 'a'].forEach(function(tagName){
+    ['button', 'a'].forEach((tagName) => {
       let reactTree = TestUtils.renderIntoDocument(
         <Button
           className={className}
           tag={tagName}
-          onClick={noOp} />
+          onClick={noOp}
+        />
       );
 
       let el = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
@@ -31,29 +31,14 @@ describe('Button', function(){
     });
   });
 
-  it('should support anchor tags with the href prop', function() {
+  it('should support custom css classes', () => {
     let className = 'testClass';
 
     let reactTree = TestUtils.renderIntoDocument(
       <Button
         className={className}
-        tagName='a'
-        href='http://google.com/'
-        onClick={noOp} />
-    );
-
-    let el = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
-
-    expect(ReactDOM.findDOMNode(el).childNodes[0].tagName.toLowerCase()).toEqual('a');
-  });
-
-  it('should support custom css classes', function() {
-    let className = 'testClass';
-
-    let reactTree = TestUtils.renderIntoDocument(
-      <Button
-        className={className}
-        onClick={noOp} />
+        onClick={noOp}
+      />
     );
 
     let comp = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
@@ -61,7 +46,7 @@ describe('Button', function(){
     expect(comp).toBeDefined();
   });
 
-  it('should call the onClick prop when clicked', function() {
+  it('should call the onClick prop when clicked', () => {
     let onClick = jest.genMockFunction();
 
     let reactTree = TestUtils.renderIntoDocument(
@@ -77,12 +62,14 @@ describe('Button', function(){
     expect(onClick).toBeCalled();
   });
 
-  it('should set the pressed state when clicked', function() {
+  it('should set the pressed state when clicked', () => {
+    jest.useFakeTimers();
     let onClick = jest.genMockFunction();
 
     let reactTree = TestUtils.renderIntoDocument(
       <Button
-        onClick={onClick} />
+        onClick={onClick}
+      />
     );
 
     let comp = TestUtils.findRenderedComponentWithType(reactTree, Button);
@@ -94,13 +81,14 @@ describe('Button', function(){
     expect(comp.state.pressed).toBe(true);
     expect(onClick).toBeCalled();
     jest.runAllTimers();
-    expect(comp.state.pressed).toBe(true);
+    expect(comp.state.pressed).toBe(false);
   });
 
-  it('should track if the mouse is over the button', function() {
+  it('should track if the mouse is over the button', () => {
     let reactTree = TestUtils.renderIntoDocument(
       <Button
-        onClick={noOp} />
+        onClick={noOp}
+      />
     );
 
     let comp = TestUtils.findRenderedComponentWithType(reactTree, Button);
@@ -113,13 +101,14 @@ describe('Button', function(){
     expect(comp.state.hover).toBe(false);
   });
 
-  it('should not respond to events when disabled', function() {
+  it('should not respond to events when disabled', () => {
     let onClick = jest.genMockFunction();
 
     let reactTree = TestUtils.renderIntoDocument(
       <Button
         disabled
-        onClick={onClick} />
+        onClick={onClick}
+      />
     );
 
     let comp = TestUtils.findRenderedComponentWithType(reactTree, Button);
@@ -138,7 +127,7 @@ describe('Button', function(){
     expect(onClick).not.toBeCalled();
   });
 
-  it('should not trigger the hover events when disableHover is true', function() {
+  it('should not trigger the hover events when disableHover is true', () => {
     let onClick = jest.genMockFunction();
     let className = 'testClass';
 
@@ -146,7 +135,8 @@ describe('Button', function(){
       <Button
         disableHover
         className={className}
-        onClick={onClick} />
+        onClick={onClick}
+      />
     );
 
     let comp = TestUtils.findRenderedComponentWithType(reactTree, Button);
@@ -165,30 +155,75 @@ describe('Button', function(){
     expect(onClick).not.toBeCalled();
   });
 
-  it('should render children', function() {
+  it('should render children', () => {
     let className = 'testClass';
 
     let reactTree = TestUtils.renderIntoDocument(
       <Button
         className={className}
-        onClick={noOp}>
-         <div className='className'/>
+        onClick={noOp}
+      >
+        <div className='className'/>
       </Button>
     );
 
     let node = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
-    expect(node).toBeDefined()
+    expect(node).toBeDefined();
   });
 
 
-  it('should render an icon', function() {
+  it('should render an icon', () => {
     let reactTree = TestUtils.renderIntoDocument(
       <Button
-          onClick={noOp}
-          icon='add'/>
+        onClick={noOp}
+        icon='add'
+      />
     );
 
     let node = TestUtils.findRenderedDOMComponentWithClass(reactTree, 'icon-add');
-    expect(node).toBeDefined()
+    expect(node).toBeDefined();
   });
+
+
+  describe('<a /> support', () => {
+    it('should support anchor tags with the href prop', () => {
+      let className = 'testClass';
+
+      let reactTree = TestUtils.renderIntoDocument(
+        <Button
+          className={className}
+          tagName='a'
+          href='http://google.com/'
+          onClick={noOp}
+        />
+      );
+
+      let el = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
+
+      expect(ReactDOM.findDOMNode(el).childNodes[0].tagName.toLowerCase()).toEqual('a');
+    });
+
+    it('should render the download prop', () => {
+      let className = 'testClass';
+
+      const filename = 'example.mp4';
+
+      let reactTree = TestUtils.renderIntoDocument(
+        <Button
+          className={className}
+          tagName='a'
+          href='http://google.com/'
+          download={filename}
+          onClick={noOp}
+        />
+      );
+
+      // Get the element so we can verify the download prop is being rendered
+      const el = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
+      const a = ReactDOM.findDOMNode(el).childNodes[0];
+
+      expect(a.download).toEqual(filename);
+    });
+  });
+
 });

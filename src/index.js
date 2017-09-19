@@ -1,7 +1,7 @@
 /** ****************************************************************************
  * Buttons
  *
- * @author       Isaac Suttell <isaac_suttell@playstation.sony.com>
+ * @author       Isaac Suttell <isaac.suttell@sony.com>
  * @file         Helper file for importing Buttons
  * @example      import { FloatingActionButton } from 'react-buttons/src';
  ******************************************************************************/
