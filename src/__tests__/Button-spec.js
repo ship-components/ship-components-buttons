@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 
 // Don't need to test these and they currently throw errors
 jest.mock('ship-components-highlight-click', () => 'div');

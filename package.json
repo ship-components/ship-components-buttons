@@ -1,6 +1,6 @@
 {
   "name": "ship-components-buttons",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Material Design React Buttons",
   "main": "src/index.js",
   "scripts": {
@@ -16,8 +16,8 @@
     "type": "git",
     "url": "git+https://github.com/ship-components/ship-components-buttons.git"
   },
-  "engines" : {
-    "node" : ">=6"
+  "engines": {
+    "node": ">=6"
   },
   "keywords": [
     "react",
@@ -33,6 +33,10 @@
     {
       "name": "Sepand Assadi",
       "email": "sepand.assadi@sony.com"
+    },
+    {
+      "name": "Chris Orescan",
+      "email": "chris.orescan@sony.com"
     }
   ],
   "license": "MIT",
@@ -45,9 +49,8 @@
     "prop-types": "^15.5.10",
     "react": ">=15.0.0",
     "react-addons-css-transition-group": ">=15.0.0",
-    "react-addons-test-utils": ">=15.0.0",
     "react-dom": ">=15.0.0",
-    "ship-components-highlight-click": "^0.2.0"
+    "ship-components-highlight-click": "^0.3.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.4",
@@ -56,7 +59,6 @@
     "babel-jest": "^21.0.2",
     "babel-loader": "^6.4.1",
     "babel-preset-env": "^1.6.0",
-    "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "codacy-coverage": "^2.0.3",
     "coveralls": "^2.13.1",
