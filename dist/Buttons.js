@@ -399,6 +399,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return;
 	      }
 	
+	      // Blur so the button loses focus and doesn't
+	      // quietly interfere with keyboard shortcuts
+	      event.target.blur();
+	
 	      if (this.props.onClick) {
 	        this.props.onClick(event);
 	      }
