@@ -105,7 +105,8 @@ Below are is a sample of how to setup the loaders:
 
 ## History
 
-- 0.4.0 - Replaced babel latest with env, updated travis node version, updated highlight-click 
+- 0.4.1 - Added a blur when the user clicks the button. Fixed react deps
+- 0.4.0 - Replaced babel latest with env, updated travis node version, updated highlight-click
 - 0.3.0 - Added support for the follow a attributes: download, rel. Upgrade deps
 - 0.2.0 - Fixes Jest to pass all tests
 - 0.1.4 - Moved ship-components-* to dependencies
