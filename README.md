@@ -2,7 +2,7 @@
 
 [React](http://facebook.github.io/react/) buttons. Exports a commonjs module that can be used with [webpack](http://webpack.github.io/). Source is in ES6 and is compiled down to ES5 using [Babel](https://babeljs.io/).
 
-[![npm](https://img.shields.io/npm/v/ship-components-buttons.svg?maxAge=2592000)](https://www.npmjs.com/package/ship-components-buttons) [![coverage](https://img.shields.io/coveralls/ship-components/ship-components-buttons.svg?maxAge=2592000)](https://coveralls.io/github/ship-components/ship-components-buttons) [![Build Status](http://img.shields.io/travis/ship-components/ship-components-buttons/master.svg?style=flat)](https://travis-ci.org/ship-components/ship-components-buttons) [![dependencies](https://img.shields.io/david/ship-components/ship-components-buttons.svg?style=flat)](https://david-dm.org/ship-components/ship-components-buttons) [![devDependencies](https://img.shields.io/david/dev/ship-components/ship-components-buttons.svg?style=flat)](https://david-dm.org/ship-components/ship-components-buttons?type=dev)
+[![npm](https://img.shields.io/npm/v/ship-components-buttons.svg)](https://www.npmjs.com/package/ship-components-buttons) [![coverage](https://img.shields.io/coveralls/ship-components/ship-components-buttons.svg)](https://coveralls.io/github/ship-components/ship-components-buttons) [![Build Status](http://img.shields.io/travis/ship-components/ship-components-buttons/master.svg?style=flat)](https://travis-ci.org/ship-components/ship-components-buttons) [![dependencies](https://img.shields.io/david/ship-components/ship-components-buttons.svg?style=flat)](https://david-dm.org/ship-components/ship-components-buttons) [![devDependencies](https://img.shields.io/david/dev/ship-components/ship-components-buttons.svg?style=flat)](https://david-dm.org/ship-components/ship-components-buttons?type=dev)
 
 ## Usage
 
@@ -104,7 +104,7 @@ Below are is a sample of how to setup the loaders:
 2. `npm test`
 
 ## History
-
+- 1.0.0 - Optimized the shouldComponentUpdate on checking the children prop
 - 0.4.1 - Added a blur when the user clicks the button. Fixed react deps
 - 0.4.0 - Replaced babel latest with env, updated travis node version, updated highlight-click
 - 0.3.0 - Added support for the follow a attributes: download, rel. Upgrade deps
