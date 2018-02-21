@@ -48,21 +48,12 @@ export default class Button extends Component {
    * @return {Boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.props.className !== nextProps.className) {
-      return true;
-    } else if (this.state.hover !== nextState.hover) {
-      return true;
-    } else if (this.state.pressed !== nextState.pressed) {
-      return true;
-    } else if (this.props.disabled !== nextProps.disabled) {
-      return true;
-    } else if (this.state.hoverSize !== nextState.hoverSize) {
-      return true;
-    } else if (this.props.iconClass !== nextProps.iconClass) {
-      return true;
-    } else {
-      return false;
-    }
+    const propsToCheck = ['children', 'className', 'iconClass', 'disabled'];
+    const statesToCheck = ['hover', 'pressed', 'hoverSize'];
+    return (
+      propsToCheck.some(key => this.props[key] !== nextProps[key]) ||
+      statesToCheck.some(key => this.state[key] !== nextState[key])
+    );
   }
 
   /**
