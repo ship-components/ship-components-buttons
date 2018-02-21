@@ -1,6 +1,6 @@
 {
   "name": "ship-components-buttons",
-  "version": "0.4.1",
+  "version": "1.0.0",
   "description": "Material Design React Buttons",
   "main": "src/index.js",
   "scripts": {
@@ -50,18 +50,18 @@
     "react": ">=15.5 <16",
     "react-addons-css-transition-group": ">=15.5 <16",
     "react-dom": ">=15.5 <16",
-    "ship-components-highlight-click": "^0.3.0"
+    "ship-components-highlight-click": "^1.0.0"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.4",
+    "autoprefixer": "^8.0.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.0",
-    "babel-jest": "^21.0.2",
-    "babel-loader": "^6.4.1",
+    "babel-jest": "^22.4.0",
+    "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "codacy-coverage": "^2.0.3",
-    "coveralls": "^2.13.1",
+    "coveralls": "^3.0.0",
     "css-loader": "^0.28.7",
     "eslint": ">=4",
     "eslint-config-ship-components": "^1.4.2",
