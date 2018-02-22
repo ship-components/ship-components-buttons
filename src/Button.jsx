@@ -51,7 +51,7 @@ export default class Button extends Component {
     const propsToCheck = ['className', 'iconClass', 'disabled'];
     const statesToCheck = ['hover', 'pressed', 'hoverSize'];
     return (
-      this.props.forceUpdate ||
+      nextProps.forceUpdate ||
       propsToCheck.some(key => this.props[key] !== nextProps[key]) ||
       statesToCheck.some(key => this.state[key] !== nextState[key])
     );
@@ -75,18 +75,22 @@ export default class Button extends Component {
    * Get the width of the button so so we ensure the hover effect fits
    */
   calculateWidth() {
-    const NextHoverSize = Math.max(
+    if (!this.refs.container) {
+      return;
+    }
+
+    const nextHoverSize = Math.max(
       this.refs.container.offsetWidth,
       this.refs.container.offsetHeight
     );
     const currHoverSize = this.state.hoverSize;
-    const hoverSizeChanged = NextHoverSize !== currHoverSize;
+    const hoverSizeChanged = nextHoverSize !== currHoverSize;
 
     // Only update the hoverSize state if
     // it's not the same as the current state.hoverSize
-    if (hoverSizeChanged && this.refs.container) {
+    if (hoverSizeChanged) {
       this.setState({
-        hoverSize: NextHoverSize
+        hoverSize: nextHoverSize
       });
     }
   }
