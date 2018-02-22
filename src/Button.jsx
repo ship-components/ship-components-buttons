@@ -48,21 +48,13 @@ export default class Button extends Component {
    * @return {Boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.props.className !== nextProps.className) {
-      return true;
-    } else if (this.state.hover !== nextState.hover) {
-      return true;
-    } else if (this.state.pressed !== nextState.pressed) {
-      return true;
-    } else if (this.props.disabled !== nextProps.disabled) {
-      return true;
-    } else if (this.state.hoverSize !== nextState.hoverSize) {
-      return true;
-    } else if (this.props.iconClass !== nextProps.iconClass) {
-      return true;
-    } else {
-      return false;
-    }
+    const propsToCheck = ['className', 'iconClass', 'disabled'];
+    const statesToCheck = ['hover', 'pressed', 'hoverSize'];
+    return (
+      nextProps.forceUpdate ||
+      propsToCheck.some(key => this.props[key] !== nextProps[key]) ||
+      statesToCheck.some(key => this.state[key] !== nextState[key])
+    );
   }
 
   /**
@@ -83,9 +75,24 @@ export default class Button extends Component {
    * Get the width of the button so so we ensure the hover effect fits
    */
   calculateWidth() {
-    this.setState({
-      hoverSize: this.refs.container ? Math.max(this.refs.container.offsetWidth, this.refs.container.offsetHeight) : void 0
-    });
+    if (!this.refs.container) {
+      return;
+    }
+
+    const nextHoverSize = Math.max(
+      this.refs.container.offsetWidth,
+      this.refs.container.offsetHeight
+    );
+    const currHoverSize = this.state.hoverSize;
+    const hoverSizeChanged = nextHoverSize !== currHoverSize;
+
+    // Only update the hoverSize state if
+    // it's not the same as the current state.hoverSize
+    if (hoverSizeChanged) {
+      this.setState({
+        hoverSize: nextHoverSize
+      });
+    }
   }
 
   /**
@@ -275,7 +282,8 @@ Button.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
     PropTypes.string
-  ])
+  ]),
+  forceUpdate: PropTypes.bool
 };
 
 /**
@@ -298,5 +306,6 @@ Button.defaultProps = {
   href: undefined,
   onClick: undefined,
   iconClass: undefined,
-  icon: undefined
+  icon: undefined,
+  forceUpdate: false
 };
