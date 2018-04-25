@@ -25,7 +25,6 @@
  */
 .tooltip--enter {
   opacity: 0;
-  -webkit-transition: 250ms all ease-in;
   transition: 250ms all ease-in;
   -webkit-transform: translateY(-30%) translateX(-50%);
           transform: translateY(-30%) translateX(-50%);
@@ -39,7 +38,6 @@
 
 .tooltip--leave {
   opacity: 1;
-  -webkit-transition: 250ms all ease-out;
   transition: 250ms all ease-out;
   -webkit-transform: translateY(0%) translateX(-50%);
           transform: translateY(0%) translateX(-50%);
@@ -65,7 +63,6 @@
   color: inherit;
   font-weight: inherit;
   overflow: hidden;
-  -webkit-transition: 100ms ease-in all;
   transition: 100ms ease-in all;
   cursor: pointer;
   vertical-align: top;
@@ -116,7 +113,6 @@
   padding: 8px;
   border-radius: 2px;
   overflow: hidden;
-  -webkit-transition: 100ms ease-in all;
   transition: 100ms ease-in all;
   position: initial;
   /**
@@ -140,7 +136,6 @@
  */
 .button--enter {
   opacity: 0;
-  -webkit-transition: 300ms all ease-in;
   transition: 300ms all ease-in;
   -webkit-transform: scale(0);
           transform: scale(0);
@@ -154,7 +149,6 @@
 
 .button--leave {
   opacity: 1;
-  -webkit-transition: 300ms all ease-out;
   transition: 300ms all ease-out;
   -webkit-transform: scale(1);
           transform: scale(1);
@@ -193,8 +187,7 @@ span + .button--icon {
 .button--action,
 .button--raised,
 .button--iconButton:hover {
-  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .button--raised {
@@ -231,12 +224,10 @@ span + .button--icon {
   .button--pressed.button--iconButton {
   -webkit-transform: translateY(2px);
           transform: translateY(2px);
-  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }
 .button--pressed.button--flat {
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
-          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 .button--pressed.button--flat .button--container {
   -webkit-transform: translateY(1px);
@@ -244,16 +235,12 @@ span + .button--icon {
 }
 
 .button--group {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .button--group .button--btn {
   width: 100%;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1
+  flex-grow: 1
 }
 
 .button--group .button--wrapper:first-child  {
@@ -265,29 +252,21 @@ span + .button--icon {
 }
 
 .button--fill {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .button--fill .button--wrapper {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
 }
 
 .button--right {
   text-align: right;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 .button--left {
   text-align: left;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  justify-content: flex-start;
 }
 
 /*# sourceMappingURL=Buttons.css.map*/
