@@ -8,14 +8,14 @@
 // External Modules
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 // Local
 import css from './tooltip.css';
 
 export default function Tooltip(props) {
   return (
-    <ReactCSSTransitionGroup
+    <CSSTransitionGroup
       className={css.container}
       component='div'
       transitionName={css}
@@ -27,7 +27,7 @@ export default function Tooltip(props) {
           {props.text}
         </div>
         : null}
-    </ReactCSSTransitionGroup>
+    </CSSTransitionGroup>
   );
 }
 
