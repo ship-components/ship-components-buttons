@@ -17,10 +17,11 @@ module.exports = {
 
   externals: {
     classnames: true,
+    'prop-types': true,
     react: 'React',
     'react-dom': true,
     'ship-components-highlight-click': true,
-    'react-addons-css-transition-group': true
+    'react-transition-group': true
   },
 
   module: {

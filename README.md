@@ -104,6 +104,7 @@ Below are is a sample of how to setup the loaders:
 2. `npm test`
 
 ## History
+- 1.0.1 - Switched to react-transition-group@1.x (for React 16); downgraded to babel-loader 6.x (for webpack)
 - 1.0.0 - Optimized the shouldComponentUpdate on checking the children prop
 - 0.4.1 - Added a blur when the user clicks the button. Fixed react deps
 - 0.4.0 - Replaced babel latest with env, updated travis node version, updated highlight-click
