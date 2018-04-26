@@ -1,6 +1,6 @@
 {
   "name": "ship-components-buttons",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Material Design React Buttons",
   "main": "src/index.js",
   "scripts": {
@@ -50,9 +50,9 @@
   "homepage": "https://github.com/ship-components/ship-components-buttons#readme",
   "dependencies": {
     "classnames": ">=2.0.0",
-    "prop-types": ">=15.5 <16",
-    "react": ">=15.5 <16",
-    "react-dom": ">=15.5 <16",
+    "prop-types": ">=15.5",
+    "react": ">=15.5",
+    "react-dom": ">=15.5",
     "react-transition-group": "^1.2.1",
     "ship-components-highlight-click": "^1.0.0"
   },
