@@ -54,7 +54,7 @@
     "react": ">=15.5",
     "react-dom": ">=15.5",
     "react-transition-group": "^1.2.1",
-    "ship-components-highlight-click": "^1.0.0"
+    "ship-components-highlight-click": "^1.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^8.0.0",
