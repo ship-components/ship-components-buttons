@@ -4,7 +4,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ButtonGroup, Button, RaisedButton, FloatingActionButton } from '../src';
+import { ButtonGroup, Button, RaisedButton, FloatingActionButton, StickyButton } from '../src';
 
 class ButtonsExamples extends React.Component {
   render() {
@@ -14,9 +14,9 @@ class ButtonsExamples extends React.Component {
         <div className='example-group'>
           <h2>Flat Buttons</h2>
           <ButtonGroup>
-            <Button>Example #1</Button>
-            <Button>Example #2</Button>
-            <Button>Example #3</Button>
+            <Button sticky>Example #1</Button>
+            <Button sticky>Example #2</Button>
+            <Button sticky>Example #3</Button>
           </ButtonGroup>
           <code>
             {'<Button onClick={this.handleClick}>\n' +
@@ -159,6 +159,24 @@ class ButtonsExamples extends React.Component {
              '</RaisedButton>'}
           </code>
         </div>
+
+        <div className='example-group'>
+          <h2>Sticky Buttons</h2>
+          <ButtonGroup>
+            <StickyButton>
+              Example #1
+            </StickyButton>
+            <StickyButton>
+              Example #2
+            </StickyButton>
+          </ButtonGroup>
+          <code>
+            {'<StickyButton onClick={this.handleClick}>\n' +
+              '      Example #1\n' +
+              '</StickyButton>'}
+          </code>
+        </div>
+
       </div>
     );
   }
