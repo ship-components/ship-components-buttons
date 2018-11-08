@@ -14,9 +14,9 @@ class ButtonsExamples extends React.Component {
         <div className='example-group'>
           <h2>Flat Buttons</h2>
           <ButtonGroup>
-            <Button sticky>Example #1</Button>
-            <Button sticky>Example #2</Button>
-            <Button sticky>Example #3</Button>
+            <Button>Example #1</Button>
+            <Button>Example #2</Button>
+            <Button>Example #3</Button>
           </ButtonGroup>
           <code>
             {'<Button onClick={this.handleClick}>\n' +
