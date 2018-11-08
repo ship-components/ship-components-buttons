@@ -136,16 +136,23 @@ export default class Button extends Component {
       this.props.onClick(event);
     }
 
-    this.setState({
-      pressed: true
-    }, () => {
-      clearTimeout(this.pressedTimeout);
-      this.pressedTimeout = setTimeout(() => {
-        this.setState({
-          pressed: false
-        });
-      }, this.props.pressedTimeout);
-    });
+    if (!this.props.sticky) {
+      this.setState({
+        pressed: true
+      }, () => {
+        clearTimeout(this.pressedTimeout);
+        this.pressedTimeout = setTimeout(() => {
+          this.setState({
+            pressed: false
+          });
+        }, this.props.pressedTimeout);
+      });
+    } else {
+      let currentPressedState = !!this.state.pressed;
+      this.setState({
+        pressed: !currentPressedState
+      });
+    }
   }
 
   /**
@@ -185,7 +192,8 @@ export default class Button extends Component {
       css[this.props.type],
       {
         [css.disabled] : this.props.disabled,
-        [css.pressed] : this.state.pressed
+        [css.pressed]: this.state.pressed,
+        [css.sticky]: this.props.sticky
       }
     );
 
@@ -283,7 +291,8 @@ Button.propTypes = {
     PropTypes.node,
     PropTypes.string
   ]),
-  forceUpdate: PropTypes.bool
+  forceUpdate: PropTypes.bool,
+  sticky: PropTypes.bool
 };
 
 /**
@@ -307,5 +316,6 @@ Button.defaultProps = {
   onClick: undefined,
   iconClass: undefined,
   icon: undefined,
-  forceUpdate: false
+  forceUpdate: false,
+  sticky: false
 };
