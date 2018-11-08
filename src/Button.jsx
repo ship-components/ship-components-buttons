@@ -192,9 +192,9 @@ export default class Button extends Component {
       css[this.props.type],
       {
         [css.disabled] : this.props.disabled,
-        [css.pressed] : this.state.pressed
-      },
-      this.props.sticky ? css.sticky : null
+        [css.pressed]: this.state.pressed,
+        [css.sticky]: this.props.sticky
+      }
     );
 
     let hoverStyles = {};
