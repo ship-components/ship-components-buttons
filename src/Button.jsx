@@ -6,7 +6,7 @@
  ******************************************************************************/
 
 // External Modules
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import HighlightClick from 'ship-components-highlight-click';
@@ -27,7 +27,7 @@ export default class Button extends Component {
     this.state = {
       hoverSize: void 0,
       hover: false,
-      pressed: false
+      pressed: props.initPressed
     };
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
@@ -132,6 +132,8 @@ export default class Button extends Component {
     // quietly interfere with keyboard shortcuts
     event.target.blur();
 
+    event.target.value = { pressed: this.props.sticky && !this.state.pressed };
+
     if (this.props.onClick) {
       this.props.onClick(event);
     }
@@ -191,7 +193,7 @@ export default class Button extends Component {
       css.btn,
       css[this.props.type],
       {
-        [css.disabled] : this.props.disabled,
+        [css.disabled]: this.props.disabled,
         [css.pressed]: this.state.pressed,
         [css.sticky]: this.props.sticky
       }
@@ -214,7 +216,7 @@ export default class Button extends Component {
     // Construct props
     let props = {
       disabled: this.props.disabled,
-      ref:'container',
+      ref: 'container',
       className: btnClasses,
       onMouseEnter: this.handleMouseEnter,
       onMouseLeave: this.handleMouseLeave,
@@ -292,7 +294,8 @@ Button.propTypes = {
     PropTypes.string
   ]),
   forceUpdate: PropTypes.bool,
-  sticky: PropTypes.bool
+  sticky: PropTypes.bool,
+  initPressed: PropTypes.bool
 };
 
 /**
@@ -317,5 +320,6 @@ Button.defaultProps = {
   iconClass: undefined,
   icon: undefined,
   forceUpdate: false,
-  sticky: false
+  sticky: false,
+  initPressed: false
 };
