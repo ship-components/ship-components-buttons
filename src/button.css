@@ -178,9 +178,7 @@ span + .icon {
       transform: translateY(1px);
     }
   }
-  &.sticky {
-    background-color: color($primary-color a(0.5));
-  }
+  background-color: color($primary-color a(0.5));
 }
 
 .group {

@@ -7,6 +7,15 @@ import ReactDOM from 'react-dom';
 import { ButtonGroup, Button, RaisedButton, FloatingActionButton, StickyButton } from '../src';
 
 class ButtonsExamples extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      stickyButton1Pressed: false,
+      stickyButton2Pressed: true
+    };
+  }
+
   render() {
     return (
       <div>
@@ -163,16 +172,30 @@ class ButtonsExamples extends React.Component {
         <div className='example-group'>
           <h2>Sticky Buttons</h2>
           <ButtonGroup>
-            <StickyButton>
+            <StickyButton
+              onClick={() => {
+                this.setState((state, props) => ({
+                  stickyButton1Pressed: !state.stickyButton1Pressed
+                }))
+              }}
+              pressed={this.state.stickyButton1Pressed}
+            >
               Example #1
             </StickyButton>
-            <StickyButton>
+            <StickyButton
+              onClick={() => {
+                this.setState((state, props) => ({
+                  stickyButton2Pressed: !state.stickyButton2Pressed
+                }))
+              }}
+              pressed={this.state.stickyButton2Pressed}
+            >
               Example #2
             </StickyButton>
           </ButtonGroup>
           <code>
-            {'<StickyButton onClick={this.handleClick}>\n' +
-              '      Example #1\n' +
+            {'<StickyButton onClick={this.handleClick}> pressed={true}\n' +
+              '      Example #2\n' +
               '</StickyButton>'}
           </code>
         </div>

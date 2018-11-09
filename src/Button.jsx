@@ -27,7 +27,7 @@ export default class Button extends Component {
     this.state = {
       hoverSize: void 0,
       hover: false,
-      pressed: props.initPressed
+      pressed: props.pressed
     };
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
@@ -48,7 +48,7 @@ export default class Button extends Component {
    * @return {Boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
-    const propsToCheck = ['className', 'iconClass', 'disabled'];
+    const propsToCheck = ['className', 'iconClass', 'disabled', 'pressed'];
     const statesToCheck = ['hover', 'pressed', 'hoverSize'];
     return (
       nextProps.forceUpdate ||
@@ -132,13 +132,11 @@ export default class Button extends Component {
     // quietly interfere with keyboard shortcuts
     event.target.blur();
 
-    event.target.value = { pressed: this.props.sticky && !this.state.pressed };
-
     if (this.props.onClick) {
       this.props.onClick(event);
     }
 
-    if (!this.props.sticky) {
+    if (!this.props.readOnly) {
       this.setState({
         pressed: true
       }, () => {
@@ -148,11 +146,6 @@ export default class Button extends Component {
             pressed: false
           });
         }, this.props.pressedTimeout);
-      });
-    } else {
-      let currentPressedState = !!this.state.pressed;
-      this.setState({
-        pressed: !currentPressedState
       });
     }
   }
@@ -194,8 +187,7 @@ export default class Button extends Component {
       css[this.props.type],
       {
         [css.disabled]: this.props.disabled,
-        [css.pressed]: this.state.pressed,
-        [css.sticky]: this.props.sticky
+        [css.pressed]: this.props.readOnly ? this.props.pressed : this.state.pressed
       }
     );
 
@@ -294,8 +286,8 @@ Button.propTypes = {
     PropTypes.string
   ]),
   forceUpdate: PropTypes.bool,
-  sticky: PropTypes.bool,
-  initPressed: PropTypes.bool
+  readOnly: PropTypes.bool,
+  pressed: PropTypes.bool
 };
 
 /**
@@ -320,6 +312,6 @@ Button.defaultProps = {
   iconClass: undefined,
   icon: undefined,
   forceUpdate: false,
-  sticky: false,
-  initPressed: false
+  readOnly: false,
+  pressed: false
 };
