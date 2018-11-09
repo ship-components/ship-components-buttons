@@ -176,6 +176,20 @@ export default class Button extends Component {
     }
   }
 
+  getHoverStyles() {
+    let hoverStyles = {};
+    if (this.state.hoverSize) {
+      // Ensure it covers the button
+      hoverStyles.width = this.state.hoverSize * 1.3;
+      hoverStyles.height = hoverStyles.width;
+
+      // Center it
+      hoverStyles.marginLeft = hoverStyles.width / -2;
+      hoverStyles.marginTop = hoverStyles.marginLeft;
+    }
+    return hoverStyles;
+  }
+
   /**
    * Render
    * @return {React}
@@ -190,17 +204,6 @@ export default class Button extends Component {
         [css.pressed]: this.props.readOnly ? this.props.pressed : this.state.pressed
       }
     );
-
-    let hoverStyles = {};
-    if (this.state.hoverSize) {
-      // Ensure it covers the button
-      hoverStyles.width = this.state.hoverSize * 1.3;
-      hoverStyles.height = hoverStyles.width;
-
-      // Center it
-      hoverStyles.marginLeft = hoverStyles.width / -2;
-      hoverStyles.marginTop = hoverStyles.marginLeft;
-    }
 
     // Store it on `this` so JSX reads it properly
     const ButtonComponent = this.getTag();
@@ -240,7 +243,7 @@ export default class Button extends Component {
             >
               {this.state.hover && !this.props.disableHover ?
                 <div className={css.hoverEffect}
-                  style={hoverStyles}
+                  style={this.getHoverStyles()}
                 />
                 : null}
             </CSSTransitionGroup>
