@@ -6,7 +6,7 @@
  ******************************************************************************/
 
 // External Modules
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import HighlightClick from 'ship-components-highlight-click';
@@ -27,7 +27,7 @@ export default class Button extends Component {
     this.state = {
       hoverSize: void 0,
       hover: false,
-      pressed: false
+      pressed: props.pressed
     };
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
@@ -48,7 +48,7 @@ export default class Button extends Component {
    * @return {Boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
-    const propsToCheck = ['className', 'iconClass', 'disabled'];
+    const propsToCheck = ['className', 'iconClass', 'disabled', 'pressed'];
     const statesToCheck = ['hover', 'pressed', 'hoverSize'];
     return (
       nextProps.forceUpdate ||
@@ -136,7 +136,7 @@ export default class Button extends Component {
       this.props.onClick(event);
     }
 
-    if (!this.props.sticky) {
+    if (!this.props.readOnly) {
       this.setState({
         pressed: true
       }, () => {
@@ -146,11 +146,6 @@ export default class Button extends Component {
             pressed: false
           });
         }, this.props.pressedTimeout);
-      });
-    } else {
-      let currentPressedState = !!this.state.pressed;
-      this.setState({
-        pressed: !currentPressedState
       });
     }
   }
@@ -181,22 +176,7 @@ export default class Button extends Component {
     }
   }
 
-  /**
-   * Render
-   * @return {React}
-   */
-  render() {
-    let btnClasses = classNames(
-      'ship-components-btn',
-      css.btn,
-      css[this.props.type],
-      {
-        [css.disabled] : this.props.disabled,
-        [css.pressed]: this.state.pressed,
-        [css.sticky]: this.props.sticky
-      }
-    );
-
+  getHoverStyles() {
     let hoverStyles = {};
     if (this.state.hoverSize) {
       // Ensure it covers the button
@@ -207,6 +187,23 @@ export default class Button extends Component {
       hoverStyles.marginLeft = hoverStyles.width / -2;
       hoverStyles.marginTop = hoverStyles.marginLeft;
     }
+    return hoverStyles;
+  }
+
+  /**
+   * Render
+   * @return {React}
+   */
+  render() {
+    let btnClasses = classNames(
+      'ship-components-btn',
+      css.btn,
+      css[this.props.type],
+      {
+        [css.disabled]: this.props.disabled,
+        [css.pressed]: this.props.readOnly ? this.props.pressed : this.state.pressed
+      }
+    );
 
     // Store it on `this` so JSX reads it properly
     const ButtonComponent = this.getTag();
@@ -214,7 +211,7 @@ export default class Button extends Component {
     // Construct props
     let props = {
       disabled: this.props.disabled,
-      ref:'container',
+      ref: 'container',
       className: btnClasses,
       onMouseEnter: this.handleMouseEnter,
       onMouseLeave: this.handleMouseLeave,
@@ -246,7 +243,7 @@ export default class Button extends Component {
             >
               {this.state.hover && !this.props.disableHover ?
                 <div className={css.hoverEffect}
-                  style={hoverStyles}
+                  style={this.getHoverStyles()}
                 />
                 : null}
             </CSSTransitionGroup>
@@ -292,7 +289,8 @@ Button.propTypes = {
     PropTypes.string
   ]),
   forceUpdate: PropTypes.bool,
-  sticky: PropTypes.bool
+  readOnly: PropTypes.bool,
+  pressed: PropTypes.bool
 };
 
 /**
@@ -317,5 +315,6 @@ Button.defaultProps = {
   iconClass: undefined,
   icon: undefined,
   forceUpdate: false,
-  sticky: false
+  readOnly: false,
+  pressed: false
 };

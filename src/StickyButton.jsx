@@ -11,7 +11,7 @@ import Button from './Button';
 export default function StickyButton(props) {
   return (
     <Button {...props}
-      sticky
+      readOnly
     />
   );
 }
