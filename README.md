@@ -104,6 +104,7 @@ Below are is a sample of how to setup the loaders:
 2. `npm test`
 
 ## History
+- 1.1.1 - Added initPressed prop; added pressed state to handleClick event target value.
 - 1.1.0 - Added support for sticky buttons
 - 1.0.2 - Fixed React dependencies (for React 16)
 - 1.0.1 - Switched to react-transition-group@1.x (for React 16); downgraded to babel-loader 6.x (for webpack)
