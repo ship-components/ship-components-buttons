@@ -27,7 +27,7 @@ export default class Button extends Component {
     this.state = {
       hoverSize: void 0,
       hover: false,
-      pressed: props.pressed
+      pressed: props.value
     };
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
@@ -48,7 +48,7 @@ export default class Button extends Component {
    * @return {Boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
-    const propsToCheck = ['className', 'iconClass', 'disabled', 'pressed'];
+    const propsToCheck = ['className', 'iconClass', 'disabled', 'value'];
     const statesToCheck = ['hover', 'pressed', 'hoverSize'];
     return (
       nextProps.forceUpdate ||
@@ -201,7 +201,7 @@ export default class Button extends Component {
       css[this.props.type],
       {
         [css.disabled]: this.props.disabled,
-        [css.pressed]: this.props.readOnly ? this.props.pressed : this.state.pressed
+        [css.pressed]: this.props.readOnly ? this.props.value : this.state.pressed
       }
     );
 
@@ -290,7 +290,7 @@ Button.propTypes = {
   ]),
   forceUpdate: PropTypes.bool,
   readOnly: PropTypes.bool,
-  pressed: PropTypes.bool
+  value: PropTypes.bool
 };
 
 /**
@@ -316,5 +316,5 @@ Button.defaultProps = {
   icon: undefined,
   forceUpdate: false,
   readOnly: false,
-  pressed: false
+  value: false
 };
