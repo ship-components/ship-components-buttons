@@ -178,7 +178,7 @@ class ButtonsExamples extends React.Component {
                   stickyButton1Pressed: !state.stickyButton1Pressed
                 }))
               }}
-              pressed={this.state.stickyButton1Pressed}
+              value={this.state.stickyButton1Pressed}
             >
               Example #1
             </StickyButton>
@@ -188,13 +188,13 @@ class ButtonsExamples extends React.Component {
                   stickyButton2Pressed: !state.stickyButton2Pressed
                 }))
               }}
-              pressed={this.state.stickyButton2Pressed}
+              value={this.state.stickyButton2Pressed}
             >
               Example #2
             </StickyButton>
           </ButtonGroup>
           <code>
-            {'<StickyButton onClick={this.handleClick}> pressed={true}\n' +
+            {'<StickyButton onClick={this.handleClick}> value={true}\n' +
               '      Example #2\n' +
               '</StickyButton>'}
           </code>
