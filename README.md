@@ -104,6 +104,7 @@ Below are is a sample of how to setup the loaders:
 2. `npm test`
 
 ## History
+- 1.1.2 - Renamed prop to value.
 - 1.1.1 - Added initPressed prop; added pressed state to handleClick event target value.
 - 1.1.0 - Added support for sticky buttons
 - 1.0.2 - Fixed React dependencies (for React 16)
