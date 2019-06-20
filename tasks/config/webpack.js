@@ -63,7 +63,6 @@ module.exports = function(grunt) {
    * Development Server
    */
   var serverOptions = Object.assign({}, require('./webpack.config'), {
-    // plugins: [],
     entry : {
       bundle: path.resolve(__dirname, '../../examples/ButtonsExample.jsx')
     },
@@ -104,7 +103,6 @@ module.exports = function(grunt) {
       }
     ]
   });
-// console.log(serverOptions)
   grunt.config.set('webpack-dev-server', {
     options: {
       webpack: serverOptions,
