@@ -94,7 +94,7 @@ describe('<Button />', () => {
     let node = TestUtils.findRenderedDOMComponentWithClass(reactTree, shipBtnClass);
 
     expect(comp.state.hover).toBe(false);
-// HERE
+    // HERE
     TestUtils.Simulate.mouseEnter(node);
     expect(comp.state.hover).toBe(true);
     TestUtils.Simulate.mouseLeave(node);
