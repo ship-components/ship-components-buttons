@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var MiniCssExtractPlugin = require('mini-css-extract-plugin');
+var postCssPlugins = require('../../libs/postCssPlugins');
 
 module.exports = {
   // Where to start
@@ -25,62 +26,53 @@ module.exports = {
   },
 
   module: {
-    preLoaders: [{
-      test: /\.(jsx?|es6)$/,
-      exclude: /(node_modules|dist)/,
-      include: /src\/.*/,
-      loader: 'eslint'
-    }],
-    loaders: [
+    // preLoaders: [],
+    rules: [
       // ES6/JSX for App
       {
         test: /\.(jsx?|es6)$/,
         exclude: /node_modules/,
-        loader: 'babel'
+        loader: 'babel-loader'
       },
       // ES6/JSX for external modules
       {
         test: /\.(jsx?|es6)$/,
         include: [
-          /ship-components\-.*\/src/
+          /ship-components-.*[\/\\]src/
         ],
-        loader: 'babel'
+        loader: 'babel-loader'
       },
       // Ensure 'use strict' is everywhere
       {
         test: /\.(jsx?|es6)$/,
         exclude: /node_modules/,
-        loader: 'strict'
+        loader: 'strict-loader'
       },
       // CSS Modules
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract(
-          'style-loader',
-          'css-loader?modules&importLoaders=1&localIdentName=[name]--[local]!postcss-loader'
-        )
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: {
+                localIdentName: '[name]--[local]'
+              }
+            }
+          },
+          {
+            // postcss
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => postCssPlugins()
+            }
+          }
+        ]
       }
     ]
   },
-
-  eslint: {
-    // Strict linting enforcing
-    failOnWarning: true
-  },
-
-  // CSS Modules
-  postcss: [
-    require('postcss-nested'),
-    require('postcss-simple-vars')({
-      variables: {
-        'primary-color' : '#42aa65'
-      }
-    }),
-    require('postcss-color-hex-alpha'),
-    require('postcss-color-function'),
-    require('postcss-calc'),
-    require('autoprefixer')
-  ],
 
   stats: {
     children: false,
@@ -90,20 +82,32 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx', '.es6'],
-    fallback: path.resolve(__dirname, '../../node_modules')
+    extensions: ['.js', '.jsx', '.es6'],
+    modules: [
+      path.resolve(__dirname, '../../node_modules')
+    ]
   },
 
   resolveLoader: {
-    fallback: path.resolve(__dirname, '../../node_modules')
+    modules: [
+      path.resolve(__dirname, '../../node_modules')
+    ]
   },
 
   plugins: [
-    new ExtractTextPlugin('[name].css', {
-      allChunks: true
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        context: __dirname,
+        eslint: {
+          // Strict linting enforcing
+          failOnWarning: false
+        }
+      }
     }),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(true)
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunks: 'all'
+    })
   ],
 
   devtool: 'source-map'

@@ -5,6 +5,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ButtonGroup, Button, RaisedButton, FloatingActionButton, StickyButton } from '../src';
+// import ButtonGroup from '../src/ButtonGroup';
+// import Button from '../src/Button';
+// import RaisedButton from '../src/RaisedButton';
+// import FloatingActionButton from '../src/FloatingActionButton';
+// import StickyButton from '../src/StickyButton';
+
 
 class ButtonsExamples extends React.Component {
 
