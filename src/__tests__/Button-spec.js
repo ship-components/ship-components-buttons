@@ -46,7 +46,7 @@ describe('<Button />', () => {
   });
 
   it('should call the onClick prop when clicked', () => {
-    let onClick = jest.genMockFunction();
+    let onClick = jest.fn();
 
     let reactTree = TestUtils.renderIntoDocument(
       <Button
@@ -63,7 +63,7 @@ describe('<Button />', () => {
 
   it('should set the pressed state when clicked', () => {
     jest.useFakeTimers();
-    let onClick = jest.genMockFunction();
+    let onClick = jest.fn();
 
     let reactTree = TestUtils.renderIntoDocument(
       <Button
@@ -102,7 +102,7 @@ describe('<Button />', () => {
   });
 
   it('should not respond to events when disabled', () => {
-    let onClick = jest.genMockFunction();
+    let onClick = jest.fn();
 
     let reactTree = TestUtils.renderIntoDocument(
       <Button
@@ -128,7 +128,7 @@ describe('<Button />', () => {
   });
 
   it('should not trigger the hover events when disableHover is true', () => {
-    let onClick = jest.genMockFunction();
+    let onClick = jest.fn();
     let className = 'testClass';
 
     let reactTree = TestUtils.renderIntoDocument(
