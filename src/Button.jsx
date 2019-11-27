@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import HighlightClick from 'ship-components-highlight-click';
-import { CSSTransitionGroup } from 'react-transition-group';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import Tooltip from './Tooltip';
 
@@ -235,18 +235,18 @@ export default class Button extends Component {
           >
             {this.props.children}
             {this.renderIcon()}
-            <CSSTransitionGroup
-              className={css.hoverContainer}
-              transitionName={css}
-              transitionEnterTimeout={500}
-              transitionLeaveTimeout={500}
-            >
+            <TransitionGroup className={css.hoverContainer}>
               {this.state.hover && !this.props.disableHover ?
-                <div className={css.hoverEffect}
-                  style={this.getHoverStyles()}
-                />
-                : null}
-            </CSSTransitionGroup>
+                <CSSTransition
+                  classNames={css}
+                  timeout={500}
+                >
+                  <div className={css.hoverEffect}
+                    style={this.getHoverStyles()}
+                  />
+                </CSSTransition>
+              : null}
+            </TransitionGroup>
           </HighlightClick>
         </ButtonComponent>
         {this.props.tooltip ?

@@ -8,26 +8,25 @@
 // External Modules
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CSSTransitionGroup } from 'react-transition-group';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 // Local
 import css from './tooltip.css';
 
 export default function Tooltip(props) {
   return (
-    <CSSTransitionGroup
-      className={css.container}
-      component='div'
-      transitionName={css}
-      transitionEnterTimeout={250}
-      transitionLeaveTimeout={250}
-    >
+    <TransitionGroup className={css.container}>
       {props.visible ?
-        <div className={css.text}>
-          {props.text}
-        </div>
-        : null}
-    </CSSTransitionGroup>
+        <CSSTransition
+          classNames={css}
+          timeout={250}
+        >
+          <div className={css.text}>
+            {props.text}
+          </div>
+        </CSSTransition>
+      : null}
+    </TransitionGroup>
   );
 }
 

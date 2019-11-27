@@ -33,13 +33,13 @@
   transform: translateY(0%) translateX(-50%);
 }
 
-.leave {
+.exit {
   opacity: 1;
   transition: 250ms all ease-out;
   transform: translateY(0%) translateX(-50%);
 }
 
-.leaveActive {
+.exitActive {
   opacity: 0;
   transform: translateY(-30%) translateX(-50%);
 }
