@@ -25,7 +25,7 @@ export default function Tooltip(props) {
             {props.text}
           </div>
         </CSSTransition>
-      : null}
+        : null}
     </TransitionGroup>
   );
 }

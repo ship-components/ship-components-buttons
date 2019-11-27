@@ -245,7 +245,7 @@ export default class Button extends Component {
                     style={this.getHoverStyles()}
                   />
                 </CSSTransition>
-              : null}
+                : null}
             </TransitionGroup>
           </HighlightClick>
         </ButtonComponent>
