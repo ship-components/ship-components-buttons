@@ -1,6 +1,6 @@
 {
   "name": "ship-components-buttons",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Material Design React Buttons",
   "main": "src/index.js",
   "scripts": {
