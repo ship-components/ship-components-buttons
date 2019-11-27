@@ -104,6 +104,7 @@ Below are is a sample of how to setup the loaders:
 2. `npm test`
 
 ## History
+- 1.2.1 - Upgraded react-transition-group to 2.9.0.
 - 1.1.2 - Renamed prop to value.
 - 1.1.1 - Added initPressed prop; added pressed state to handleClick event target value.
 - 1.1.0 - Added support for sticky buttons
