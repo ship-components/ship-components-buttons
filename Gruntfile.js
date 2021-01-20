@@ -6,6 +6,7 @@
  * Check out the `tasks` directory instead.
  */
 
+// eslint-disable-next-line func-names
 module.exports = function(grunt) {
   'use strict';
 

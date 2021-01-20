@@ -9,10 +9,12 @@
  *    https://github.com/webpack/grunt-webpack
  */
 
-var webpack = require('webpack');
 var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var MiniCssExtractPlugin = require('mini-css-extract-plugin');
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+var postCssPlugins = require('../../libs/postCssPlugins');
 
+// eslint-disable-next-line func-names
 module.exports = function(grunt) {
 
   /** **************************************************************************
@@ -23,17 +25,18 @@ module.exports = function(grunt) {
     plugins: []
   });
 
+  console.log(buildOptions);
+
   grunt.config.set('webpack', {
 
     options: buildOptions,
 
     dev: {
       plugins: [
-        new ExtractTextPlugin('[name].css', {
-          allChunks: true
-        }),
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.OccurenceOrderPlugin(true)
+        new MiniCssExtractPlugin({
+          filename: '[name].css',
+          chunks: 'all'
+        })
       ]
     },
 
@@ -43,13 +46,16 @@ module.exports = function(grunt) {
       },
 
       plugins: [
-        new ExtractTextPlugin('[name].min.css', {
-          allChunks: true
-        }),
-        new webpack.optimize.OccurenceOrderPlugin(true),
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin()
-      ]
+        new MiniCssExtractPlugin({
+          filename: '[name].min.css',
+          chunks: 'all'
+        })
+      ],
+      optimization: {
+        minimizer: [
+          new UglifyJsPlugin()
+        ]
+      }
     }
   });
 
@@ -57,17 +63,14 @@ module.exports = function(grunt) {
    * Development Server
    */
   var serverOptions = Object.assign({}, require('./webpack.config'), {
-    plugins: [],
     entry : {
       bundle: path.resolve(__dirname, '../../examples/ButtonsExample.jsx')
     },
     output: {
       filename: 'bundle.js'
     },
+    mode: 'development',
     devtool: 'eval',
-    eslint: {
-      failOnWarning: false
-    },
     externals: {
       'react': 'React',
       'react-dom': 'ReactDOM'
@@ -76,16 +79,30 @@ module.exports = function(grunt) {
 
   // Remove Extract Plugin. Gotta clone to prevent changing above config
   serverOptions.module = Object.assign({}, serverOptions.module);
-  serverOptions.module.loaders = serverOptions.module.loaders.slice(0);
-  serverOptions.module.loaders.splice(serverOptions.module.loaders.length - 1);
-  serverOptions.module.loaders.push({
+  serverOptions.module.rules = serverOptions.module.rules.slice(0);
+  serverOptions.module.rules.splice(serverOptions.module.rules.length - 1);
+  serverOptions.module.rules.push({
     test: /\.css$/,
-    loaders: [
-      'style-loader',
-      'css-loader?modules&importLoaders=1&localIdentName=[name]--[local]!postcss-loader'
+    use: [
+      MiniCssExtractPlugin.loader,
+      {
+        loader: 'css-loader',
+        options: {
+          importLoaders: 1,
+          modules: {
+            localIdentName: '[name]--[local]'
+          }
+        }
+      },
+      {
+        // postcss
+        loader: 'postcss-loader',
+        options: {
+          plugins: () => postCssPlugins()
+        }
+      }
     ]
   });
-
   grunt.config.set('webpack-dev-server', {
     options: {
       webpack: serverOptions,
